@@ -3,6 +3,7 @@
 ### Team Name: Roux HaploQA 
 
 ### Team Members:
+- Sanyami Shah
 - Jasmine Owens
 - Fangrui Guo
 - Alexander Berger
@@ -67,9 +68,7 @@ proposal.
 - Code Review: GitHub.com Pull Request System
 - Programming Languages (expected)
   - Backend Language: [Python 3.7+](https://www.python.org/)
-  - Backend Framework: 
-    - [FastAPI](https://fastapi.tiangolo.com/), or 
-    - [Django](https://www.djangoproject.com/) (TBD)
+  - Backend Framework:  [FastAPI](https://fastapi.tiangolo.com/)
   - Frontend Language: Javascript / [Typescript](https://www.typescriptlang.org/)
   - Frontend Framework: [Angular](https://angular.io/)
 - Documentation Syntax: [Markdown](https://daringfireball.net/projects/markdown/) 
