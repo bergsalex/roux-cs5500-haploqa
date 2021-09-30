@@ -31,7 +31,7 @@ Associate Professor<br>
 
 ## 2. Project Description
 The Jackson Laboratory's Computational Sciences department would like to start the process of 
-rebuilding HaploQA, legacy scientific application. It is motivated to do so due to a request for a
+rebuilding HaploQA, a legacy scientific application. It is motivated to do so due to a request for a
 major new feature, and to bring the application in line with current application interoperability
 goals.
 
