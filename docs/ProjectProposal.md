@@ -11,8 +11,6 @@
 #### Primary Proposal Author: Alexander Berger
 
 ## 1. Client and Stakeholders
-List your client(s) along with their contact information. Also list any 
-stakeholders in your project.  Provide any explanation needed.
 
 ### Clients
 Dave Walton - The Jackson Laboratory<br>
@@ -51,17 +49,11 @@ goals.
 >> PMID: 26684931; PMCID: PMC4751547
 
 
-
 ## 3. Language and Resources
 
 ### License
 The code will be released under the 
 [MIT Public License](https://github.com/TheJacksonLaboratory/haploqa/blob/master/LICENSE.txt)
-
-List and/or describe the programming language you intend to use and any other 
-resources you are going to obtain along with any associated costs. Not being 
-able to obtain these resources will result in you having to create a new 
-proposal. 
 
 - Version Control: Git
 - VCS Server: GitHub.com
@@ -77,13 +69,17 @@ proposal.
 List all of your project goals divided up into primary, secondary and tertiary 
 goals. 
 - Primary goals 
+  - Provide capability for interpretation of genotype calls from the Mouse Universal Genotyping 
+  array platforms
+- Secondary goals 
   - Lay the Software Engineering Groundwork for the project to rebuild HaploQA 
   - Complete at least one identified possible code contributions
-- Secondary goals 
-  - TODO
 - Tertiary goals 
-  - TODO: 
-  - (maybe something like Contributed code has complete test coverage)
+  - Foster innovation through collaboration and communication between Roux and GeDI (Jax) teams
+  - Gain experience working in an environment where some project components will be completed by a 
+  - separate team.
+  - Gain experience working in an open team style and in actively adapting team roles to current 
+  conditions.
 
 ### Possible Code Contributions
 - Roux team rewrites the front-end entirely
@@ -98,11 +94,14 @@ reconstruction of Non-DO mice
 - GeDI team provides API end-points to fetch sample data and genotype probabilities for HaploQA
 
 ## 5. Approvals
-Describe how and when you received approval for this project from your 
-instructor and how/when you got approval from your client(s).
-Give the date and method of approval from all your team members.
+Team members must agree to and sign the [team contract](./TeamContract.md)
 
-Approvals will happen through the GitHub.com Pull Request system. 
+Approvals for code contributions will happen through the GitHub.com Pull Request system and be
+reviewed by the team.
+
+Approvals from clients will happen through the GitHub.com Pull Request system where appropriate and
+email elsewhere.
+
 
 ## 6. Log
 This document is to be tracked and reviewed in version control (see above 
