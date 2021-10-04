@@ -48,22 +48,25 @@ goals.
 >> G3 (Bethesda). 2015 Dec 18;6(2):263-79. doi: 10.1534/g3.115.022087.
 >> PMID: 26684931; PMCID: PMC4751547
 
+We have been asked to design a frontend application in the Angular frontend framework that utilizes
+a modular visualization design, to build these modular visualizations by migrating them
+from legacy HaploQA, and to start migrating the legacy frontend application pages. 
+
+We will be provided with an API contract (as an OAS3 doc) that our frontend will utilize during 
+development since the GeDI team at The Jackson Laboratory will not yet have implemented that system.
+
 
 ## 3. Language and Resources
-
-### License
-The code will be released under the 
-[MIT Public License](https://github.com/TheJacksonLaboratory/haploqa/blob/master/LICENSE.txt)
 
 - Version Control: Git
 - VCS Server: GitHub.com
 - Code Review: GitHub.com Pull Request System
 - Programming Languages (expected)
-  - Backend Language: [Python 3.7+](https://www.python.org/)
-  - Backend Framework:  [FastAPI](https://fastapi.tiangolo.com/)
   - Frontend Language: Javascript / [Typescript](https://www.typescriptlang.org/)
   - Frontend Framework: [Angular](https://angular.io/)
 - Documentation Syntax: [Markdown](https://daringfireball.net/projects/markdown/) 
+- API Description: [OpenAPI Specification (OAS) v3.\*.\*](https://github.com/OAI/OpenAPI-Specification)
+- License: [MIT Public License](https://github.com/TheJacksonLaboratory/haploqa/blob/master/LICENSE.txt)
 
 ## 4. Project Goals
 List all of your project goals divided up into primary, secondary and tertiary 
@@ -73,7 +76,8 @@ goals.
   array platforms
 - Secondary goals 
   - Lay the Software Engineering Groundwork for the project to rebuild HaploQA 
-  - Complete at least one identified possible code contributions
+  - Deliver a modularized visualization
+  - Deliver a frontend application that utilizes the modularized visualization
 - Tertiary goals 
   - Foster innovation through collaboration and communication between Roux and GeDI (Jax) teams
   - Gain experience working in an environment where some project components will be completed by a 
@@ -81,20 +85,29 @@ goals.
   - Gain experience working in an open team style and in actively adapting team roles to current 
   conditions.
 
-### Possible Code Contributions
+### Code Contributions
 - Roux team rewrites the front-end entirely
+  - Utilize GeDI API contact for expected backend
+  - Utilize application scaffolding and styling from The Jackson Laboratory
+  - Utilize Oauth & JWT as specified by The Jackson Laboratory
+  - Design should fundamentally enable utilizing modular visualizations
+  - Explore the possibility of implementing quality of life improvements
+    - Navigation, searching and listing are not as well implemented as users would like
+    - Users frequently request the ability to take "bulk" actions across many samples
 - Roux team takes the existing visualizations and makes them pluggable modules
-- Roux team writes a new FastAPI back end that is responsible for managing the "QA/QC" app, storing 
-only data necessary for that app, and interacting with services for HMM and Genotype/SNP Storage
+  - We need to figure out what to do about the visualization regardless
+  - At least need to be able to take the existing visualizations and put them in a module or component
+  - Each visualization is custom and The Jackson Laboratory does not believe there are  pre-existing
+  solutions
+  - The Jackson Laboratory recommends using a tool like NX to make packaging easier
+  - The data input for the existing visualizations is not expected to change a during this migration
+    - We can use the existing legacy visualizations to understand what data will be used for the
+    new visualizations
 
-- GeDI team takes a new "General AIL QTL2 Library" to replace Keith's HMM for Haplotype 
-reconstruction of Non-DO mice
-- GeDI team moves genotype intake to SIP
-- GeDI team moves genotype/snp sample storage to BigQuery
-- GeDI team provides API end-points to fetch sample data and genotype probabilities for HaploQA
+- GeDI team provides an OAS3 API contact
 
 ## 5. Approvals
-Team members must agree to and sign the [team contract](./TeamContract.md)
+Team members must agree to and sign the [team contract](./TeamContract.md).
 
 Approvals for code contributions will happen through the GitHub.com Pull Request system and be
 reviewed by the team.
