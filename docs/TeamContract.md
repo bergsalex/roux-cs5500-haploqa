@@ -75,4 +75,4 @@ to me, and to the change system proposed by this document.
 ### Type your name/date here. Putting anyone else’s name here will be considered academic dishonesty. 
 - Alexander Berger (October 1st, 2021)
 - Jasmine Owens (October 2, 2021)
-
+- Sanyami Shah (October 4th, 2021)
