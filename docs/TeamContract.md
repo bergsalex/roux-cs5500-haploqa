@@ -76,3 +76,5 @@ to me, and to the change system proposed by this document.
 - Alexander Berger (October 1st, 2021)
 - Jasmine Owens (October 2, 2021)
 - Sanyami Shah (October 4th, 2021)
+- Fangrui Guo(October 11th, 2021)
+-
