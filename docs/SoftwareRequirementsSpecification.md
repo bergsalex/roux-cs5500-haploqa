@@ -13,13 +13,19 @@ Revision: v1.0.0
 
 ## Introduction
 ### Purpose
-Provide capability for interpretation of genotype calls from the Mouse Universal Genotyping 
-  array platforms.   
-  - Lay the Software Engineering Groundwork for the project to rebuild HaploQA 
-  - Deliver a modularized visualization
-  - Deliver a frontend application that utilizes the modularized visualization
+This project intends to provide capability for interpretation of genotype calls from the Mouse 
+Universal Genotyping array platforms by building a web application that utilizes a programming 
+interface to be provided by the client.
+
 ### Conventions
+- WebApp - An application that runs through a web browser
+- Module - An application component that can be used within other applications
+- FR - Functional Requirement
+- NFR - Nonfunctional Requirement
+
 ### Intended Audience
+This document is intended for all clients, users and developers on the HaploQA project. 
+
 ### Overall Description
 > HaploQA is a software platform that provides interpretation of genotype calls from the Mouse 
 > Universal Genotyping array platforms (including Mega-/Giga- MUGA) that are available from Neogen 
@@ -36,8 +42,19 @@ Provide capability for interpretation of genotype calls from the Mouse Universal
 >> PMID: 26684931; PMCID: PMC4751547
 
 ### Product Description
+We have been asked to design a web based application that utilizes a modular visualization design, 
+to build these modular visualizations by migrating them from legacy HaploQA, and to start migrating 
+the legacy frontend application pages.
 
 ### Product features
+#### Web Application
+The web application allows users to brows samples, view their metadata and visualizations, and to 
+create an account and log in.
+
+#### Visualization Modules
+The visualizations provide an interactive way to view various data present about the sample on the
+sample detail page. Modularizing these visualizations will allow for their reuse in additional
+scientific applications.
 
 ### Client and Stakeholders
 
@@ -55,7 +72,6 @@ Laura Reinholdt - The Jackson Laboratory<br>
 Associate Professor<br>
 [Web Bio](https://www.jax.org/research-and-faculty/faculty/laura-reinholdt)
 
-
 ### System users
 HaploQA is used by a wide variety of scientific and research focused users. It is assumed that the
 users of HaploQA have a foundational technical understanding of the concepts presented.
@@ -72,20 +88,84 @@ Angular web framework. These are, in order:
 See the [Angular Documentation](https://angular.io/guide/browser-support#browser-support).
 
 ### Constraints
+- The application needs to be developed in the Angular application framework
+- The application needs to utilize a modular framework for visualizations
+- The application needs to adhere to an API contract provided by the client
 
 ### User documentation requirements
+- Documentation needs to be provided for both future software developers
+  - This should include both code comments and descriptions in a relevant 
+  README.md document.
+- Documentation should be provided for end-users when necessary
+  - Application end-users are assumed to understand the science, which does not
+  need to be documented.
 
 ### Assumptions and dependencies
+- The new programming interface to be used by this web application will be 
+created by the clint.
+- The system end users will have sufficient scientific understanding of the application 
+functionality
 
 ## System Features 
-### Functional requirement X (This section repeats)
+The web application must provide the user with the following features:
+- Sample List and Search
+  - FR-1.0: Provide a list of all samples that can be viewed
+  - FR-1.1: Provide a way to search by text for samples
+  - FR-1.2: Provide a way to list search results
+  - FR-1.3: Provide a way to list samples by genetic strain
+
+- Sample Detail View
+  - FR-2.0: Display sample metadata
+    - FR-2.0.0: Page Title for Sample
+    - FR-2.0.1: All additional metadata details provided by API contract
+  - FR-2.1: Links to external browser resources
+    - FR-2.1.0: Ensemble Browser
+    - FR-2.1.1: UCSC Browser
+  - FR-2.2: Provides visualizations
+    - Visualizations provided through visualization module discussed below
+
+- Accounts
+  - FR-3.0: Ability to create a new account
+  - FR-3.1: Ability to log in
+  - FR-3.2: Allow accounts to provide information on affiliation with institutions
+
+#### Visualization Modules
+The visualization modules must provide the user (both developers and end-users) with the following
+features:
+- Visualizations
+  - FR-4.0: Genome Karyotype Plot
+  - FR-4.1: Genome Interval Plot
+
+- Modularization method
+  - FR-5.0: Can be installed into an Angular application
+  - FR-5.1: Provides a way for the application to add its own data
+  - FR-5.2: Provide module usage documentation
+
 ### Description and priority
-### Stimulus and response
+#### High Priority
+- All FR-5.X and one of FR-4.X
+- FR-1.0, FR-1.1 and FR-1.2
+- FR-2.2
+
+#### Moderate Priority
+- FR-1.3
+- FR-2.0
+
+#### Low Priority
+- FR-2.1
+- All of FR-3.X
 
 ## Nonfunctional Requirements
-### Subcategory
-### Subcategory
+### Testing and Coverage
+- NFR-1.0: Critical components should have automated testing written
+- NFR-1.1: Automated tests should be run frequently to assure stability
+
+### Modularization
+- NFR-2.0: Documentation on module usage should be comprehensive and understandable
+- NFR-2.1: It should be straightforward to use the module in an application
 
 ## Appendix
-### Diagram One:
+### Diagram One: 
+    - TBD
 ### Diagram Two:
+    - TBD
