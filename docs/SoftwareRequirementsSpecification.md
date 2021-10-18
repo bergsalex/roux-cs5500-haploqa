@@ -48,7 +48,7 @@ the legacy frontend application pages.
 
 ### Product features
 #### Web Application
-The web application allows users to brows samples, view their metadata and visualizations, and to 
+The web application allows users to browse samples, view their metadata and visualizations, and to 
 create an account and log in.
 
 #### Visualization Modules
