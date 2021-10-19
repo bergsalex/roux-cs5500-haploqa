@@ -91,7 +91,6 @@ For our specific constributions our goals are as follows:
     - Users frequently request the ability to take "bulk" actions across many samples
 
 ### Goal Considerations
-- Roux team rewrites the front-end entirely
 - The Jackson Laboratory will provide an OAS3 API contact for how to utilize the future backend API
 - Each visualization is custom and The Jackson Laboratory does not believe there are  pre-existing
 solutions
