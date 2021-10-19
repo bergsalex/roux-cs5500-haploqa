@@ -1,4 +1,4 @@
-# Project Proposal
+# Project Proposal - Version 1.1.0
 
 ### Team Name: Roux HaploQA 
 
@@ -57,54 +57,49 @@ development since the GeDI team at The Jackson Laboratory will not yet have impl
 
 
 ## 3. Language and Resources
-
 - Version Control: Git
 - VCS Server: GitHub.com
 - Code Review: GitHub.com Pull Request System
+- Issue Tracking: GitHub.com Issues
+- Project Tracking (agile board): GitHub.com Projects
 - Programming Languages (expected)
   - Frontend Language: Javascript / [Typescript](https://www.typescriptlang.org/)
   - Frontend Framework: [Angular](https://angular.io/)
 - Documentation Syntax: [Markdown](https://daringfireball.net/projects/markdown/) 
+- Versioning System: [Semantic Versioning](https://semver.org/)
 - API Description: [OpenAPI Specification (OAS) v3.\*.\*](https://github.com/OAI/OpenAPI-Specification)
 - License: [MIT Public License](https://github.com/TheJacksonLaboratory/haploqa/blob/master/LICENSE.txt)
 
 ## 4. Project Goals
-List all of your project goals divided up into primary, secondary and tertiary 
-goals. 
-- Primary goals 
-  - Provide capability for interpretation of genotype calls from the Mouse Universal Genotyping 
-  array platforms
-- Secondary goals 
-  - Lay the Software Engineering Groundwork for the project to rebuild HaploQA 
-  - Deliver a modularized visualization
-  - Deliver a frontend application that utilizes the modularized visualization
-- Tertiary goals 
-  - Foster innovation through collaboration and communication between Roux and GeDI (Jax) teams
-  - Gain experience working in an environment where some project components will be completed by a 
-  - separate team.
-  - Gain experience working in an open team style and in actively adapting team roles to current 
-  conditions.
+The overall goal of the HaploQA project is to provide capability for interpretation of genotype 
+calls from the Mouse Universal Genotyping array platforms.
 
-### Code Contributions
-- Roux team rewrites the front-end entirely
-  - Utilize GeDI API contact for expected backend
-  - Utilize application scaffolding and styling from The Jackson Laboratory
-  - Utilize Oauth & JWT as specified by The Jackson Laboratory
-  - Design should fundamentally enable utilizing modular visualizations
+For our specific constributions our goals are as follows:
+- Primary
+  - Modularize at least one existing visualzation
+    - Design should fundamentally enable utilizing modular visualizations
+  - Rebuild the HaploQA sample detail page to client specifications
+    - Specifically it must utilize the vizualization module architecture from the first goal
+- Secondary goals 
+  - Rebuild the sample listing page
+  - Rebuld the sample search and search results page
+- Tertiary goals 
+  - Modularize both existing visualizations
+  - Provide all other existing capabilities in the current HaploQA
   - Explore the possibility of implementing quality of life improvements
     - Navigation, searching and listing are not as well implemented as users would like
     - Users frequently request the ability to take "bulk" actions across many samples
-- Roux team takes the existing visualizations and makes them pluggable modules
-  - We need to figure out what to do about the visualization regardless
-  - At least need to be able to take the existing visualizations and put them in a module or component
-  - Each visualization is custom and The Jackson Laboratory does not believe there are  pre-existing
-  solutions
-  - The Jackson Laboratory recommends using a tool like NX to make packaging easier
-  - The data input for the existing visualizations is not expected to change a during this migration
-    - We can use the existing legacy visualizations to understand what data will be used for the
-    new visualizations
 
-- GeDI team provides an OAS3 API contact
+### Goal Considerations
+- Roux team rewrites the front-end entirely
+- The Jackson Laboratory will provide an OAS3 API contact for how to utilize the future backend API
+- Each visualization is custom and The Jackson Laboratory does not believe there are  pre-existing
+solutions
+- The Jackson Laboratory recommends using a tool like NX to make packaging easier
+- The data input for the existing visualizations is not expected to change a during this migration
+  - We can use the existing legacy visualizations to understand what data will be used for the
+  new visualizations
+
 
 ## 5. Approvals
 Team members must agree to and sign the [team contract](./TeamContract.md).
@@ -121,7 +116,19 @@ This document is to be tracked and reviewed in version control (see above
 Section 3). The change history to this document must be made available for 
 review, with a specific emphasis on revision. 
 
-*Proposal: To facilitate easy review of the change of this document, it is 
-proposed that we name our "Pull Requests" in the scheme*
+To easily identify the version of the document being viewed, we will keep a semantic version for
+the document up to date and immediately visible on the title line.
 
-`Software Engineerig Project Proposal - Ver #.#`
+When applying [Semantic Versioning](https://semver.org/) to a document, apply semantic versioning to a document:
+- MAJOR version for changes that fundamentally alter the document's content
+  - these types of changes include adding or removing project goals, team members, stakeholders, 
+  and altering the approval process
+- MINOR versions for changes that clarify the document's content
+  - these types of changes that include rewording, expansion, and revision,
+- PATCH version should only be used for spelling and formatting fixes
+
+> NOTE: Changes to Language and Resources can fall in either can be either MAJOR or MINOR and should
+> evaluated on a case by base basis.
+
+To facilitate easy review of the change of this document, we will name our "Pull Requests" in the 
+scheme: `Software Engineerig Project Proposal - Ver #.#.#`
