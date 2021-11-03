@@ -277,3 +277,9 @@ The user has found the information they were interested in about the sample.
 #### 5.4: When possible, all code contributions should be created as component modules for easy reuse across this and other applications at The Jackson Laboratory
 
 ## Appendix
+
+### Diagram One: Activity Diagram
+![alt text](imgs/activity_diagram.png "Activity Diagram")
+
+### Diagram Two: Communication Diagram
+![alt text](imgs/communication_diagram.png "Communication Diagram")
