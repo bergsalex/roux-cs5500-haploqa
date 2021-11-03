@@ -271,11 +271,9 @@ The user has found the information they were interested in about the sample.
 - The Genome Karyotype Plots should be displayed with a minimum of 900px of width
 
 ## 5. Additional Nonfunctional Requirements
-### 5.1: Critical components must have automated testing written to validate t
-### 5.2: Automated tests must be run prior to merging code in order to assure stability
-### 5.3: All component and module creation should be intended solely for use with the Angular web
-framework.
-### 5.4: When possible, all code contributions should be created as component modules for easy reuse
-across this and other applications at The Jackson Laboratory
+#### 5.1: Critical components must have automated testing written to validate functionality
+#### 5.2: Automated tests must be run prior to merging code in order to assure stability
+#### 5.3: All component and module creation should be intended solely for use with the Angular web framework.
+#### 5.4: When possible, all code contributions should be created as component modules for easy reuse across this and other applications at The Jackson Laboratory
 
 ## Appendix
