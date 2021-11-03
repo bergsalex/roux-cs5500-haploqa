@@ -1,5 +1,5 @@
 # Software Requirements Specification
-Revision: v1.0.0
+Revision: v1.1.0
 
 ### Table Of Contents
 1. Introduction
@@ -11,22 +11,47 @@ Revision: v1.0.0
 3. Nonfunctional Requirements
 4. Appendix
 
-## Introduction
-### Purpose
+## 1. Introduction
+### 1.1 Purpose
 This project intends to provide capability for interpretation of genotype calls from the Mouse 
 Universal Genotyping array platforms by building a web application that utilizes a programming 
 interface to be provided by the client.
 
-### Conventions
+### 1.2 Conventions
+<!--Describe any standards or typographical conventions that were followed when writing this SRS, 
+such as fonts or highlighting that have special significance. For example, state whether priorities
+for higher-level requirements are assumed to be inherited by detailed requirements, or whether every
+requirement statement is to have its own priority.-->
+This document is written using the 
+[Markdow language](https://daringfireball.net/projects/markdown/) and follows all its language and 
+syntax conventions. 
+
+Feature prioriteies exist in two tiers: 
+- Tier-1:
+  - To be delivered even at the expense of _any_ work being delivered on Tier-2
+- Tier-2, 
+  - To be prioritized only if Tier-1 can be completed
+  - Emphasis on comprehensive delivery of documentation and design over complete
+  delivery of a single component.
+
+We use the following terms to mean:
 - WebApp - An application that runs through a web browser
-- Module - An application component that can be used within other applications
-- FR - Functional Requirement
-- NFR - Nonfunctional Requirement
+- Component Module - An piece of an application that can be used within many different applications
+- Visualization - An interactive, image based representation of scientific information
 
-### Intended Audience
-This document is intended for all clients, users and developers on the HaploQA project. 
+### 1.3 Intended Audience
+<!--Describe the different types of reader that the document is intended for, such as developers, 
+project managers, marketing staff, users, testers, and documentation writers. Describe what the rest
+of this SRS contains and how it is organized. Suggest a sequence for reading the document, beginning
+with the overview sections and proceeding through the sections that are most pertinent to each 
+reader type.-->
 
-### Overall Description
+This document is intended for all contributors to the HaploQA project. This includes clients and 
+stakeholders, developers, testers, and technical writers. The document outlines the scope of the 
+current work on the project as to be completed by the Roux CS5500 "Roux HaploQA" team for the
+The Jackson Laboratory. 
+
+## 2. Overall Description
 > HaploQA is a software platform that provides interpretation of genotype calls from the Mouse 
 > Universal Genotyping array platforms (including Mega-/Giga- MUGA) that are available from Neogen 
 > Genomics (Morgan et al., 2015). The software allows for direct upload of sample and genotype data,
@@ -106,66 +131,151 @@ created by the clint.
 - The system end users will have sufficient scientific understanding of the application 
 functionality
 
-## System Features 
-The web application must provide the user with the following features:
-- Sample List and Search
-  - FR-1.0: Provide a list of all samples that can be viewed
-  - FR-1.1: Provide a way to search by text for samples
-  - FR-1.2: Provide a way to list search results
-  - FR-1.3: Provide a way to list samples by genetic strain
+## 4. System Features 
+### 4.1 Use Case Name: Allow Developers to embed the Genome Karyotype Plots as a module
+#### 4.1.1 Description and Priority
+The HaploQA legacy application has a pair of Genome Kayotype Plots whose use extends beyond the 
+HaploQA application. In order to reuse the plots the visulization need to be encapsulated behind an 
+interface that will be designed to facilitate reuse across applications. The client has both an 
+impending need for this functionality, as well as priority to adopt modulized component based 
+software. 
 
-- Sample Detail View
-  - FR-2.0: Display sample metadata
-    - FR-2.0.0: Page Title for Sample
-    - FR-2.0.1: All additional metadata details provided by API contract
-  - FR-2.1: Links to external browser resources
-    - FR-2.1.0: Ensemble Browser
-    - FR-2.1.1: UCSC Browser
-  - FR-2.2: Provides visualizations
-    - Visualizations provided through visualization module discussed below
+This is the absolute highest priority feature, its completion will be prioritized even if it's at 
+the expense of other features.
 
-- Accounts
-  - FR-3.0: Ability to create a new account
-  - FR-3.1: Ability to log in
-  - FR-3.2: Allow accounts to provide information on affiliation with institutions
+#### 4.1.2 Trigger
+A developer identifies a need to embed the Genome Karyotype Plot in their Angular web application.
 
-#### Visualization Modules
-The visualization modules must provide the user (both developers and end-users) with the following
-features:
-- Visualizations
-  - FR-4.0: Genome Karyotype Plot
-  - FR-4.1: Genome Interval Plot
+#### 4.1.3 Preconditions
+- The developer has access to an API that provides data for the Genome Karyotype Plot, or some other
+method of obtaining data in the correct format for the Genome Karyotype Plot.
+- The developer is working in the Angular web framework.
 
-- Modularization method
-  - FR-5.0: Can be installed into an Angular application
-  - FR-5.1: Provides a way for the application to add its own data
-  - FR-5.2: Provide module usage documentation
+#### 4.1.4 Regular Path
+1. The developer implements a method of requesting plot data from the API
+2. The developer adds the Genome Karyotype Plot to the page they want it displayed on 
+3. The developer feeds the response from the API to the Genome Karyotype Plot module.
+   1. The developer should not need to modify the response from the API, given that the API is 
+   indended to be used for this purpose.
+4. The developer implements any additional mechanism to update/change the plot data selections
 
-### Description and priority
-#### High Priority
-- All FR-5.X and one of FR-4.X
-- FR-1.0, FR-1.1 and FR-1.2
-- FR-2.2
+#### 4.1.4.1 Alternate Path
+1. The developer implements a method of generating data for the Genome Karyotype Plot
+2. The developer adds the Genome Karyotype Plot to the page they want it displayed on 
+3. The developer feeds the data into the Genome Karyotype Plot module
+4. The developer implements any additional mechanism to update/change the plot data selections
 
-#### Moderate Priority
-- FR-1.3
-- FR-2.0
+#### 4.1.5 Postcondition
+The Genome Karyotype Plot is embedded and usable within the developer's Angular application
 
-#### Low Priority
-- FR-2.1
-- All of FR-3.X
+#### 4.1.6 Exception Paths
+- Data to the plot might be provided in the wrong format.
+- Data provided to the plot might be outside the bounds of what the visualization can plot.
+  - This could be either for technical limitations or visual/space limitations.
 
-## Nonfunctional Requirements
-### Testing and Coverage
-- NFR-1.0: Critical components should have automated testing written
-- NFR-1.1: Automated tests should be run frequently to assure stability
+#### 4.1.7 Related Nonfunctional Requirements
+- The module's usage needs to be well documented and made available for end-user developers.
+- The visualizations will be resonponsive to user interaction.
+- The user will interact with the visualization in the same way they did with the previous version.
+- The visualizations will report errors to the developer to use as they need.
 
-### Modularization
-- NFR-2.0: Documentation on module usage should be comprehensive and understandable
-- NFR-2.1: It should be straightforward to use the module in an application
+### 4.2 Use Case Name: View a list of all samples
+#### 4.2.1 Description and Priority
+This listing of all viewable samples allows users to start exploring without having an idea of what 
+to search for. The client would like us to reproduce ther version of the page in HaploQA legacy, and
+expand the usability of this listing by including additional information yet to be specified by the
+client.
+
+This feature is a second tier priority feature, and will have an emphasis on delivering designs
+and components if a full delivery is not possible.
+
+#### 4.2.2 Trigger
+The user navigates to the main page of the application.
+
+#### 4.2.3 Precondition
+- The user has at least a minimal understanding of the underlying scientific context of the 
+application.
+
+#### 4.2.4 Regular Path
+- The user navigates to the main application page
+- The user scrolls to the list of all samples
+- The user can see details about each sample
+- The user selects a sample from the list to view details about
+
+#### 4.2.5 Postcondition
+- The user has either selected a sample and is on the sample detail page or the user has already 
+found the inforamtion they need.
+
+#### 4.2.6 Exception Paths
+- The user decides to use another features of the application
+- The user decides to stop using the application
+
+#### 4.2.7 Related Nonfunctional Requirements
+- The listing page has to be usable on a desktop browser
+- 
+
+### 4.3 Use Case Name: Search for a sample
+#### 4.3.1 Description and Priority
+When a user has an idea of what samples they want to inspect, the sample search functionality allows
+them to search samples by text.
+
+#### 4.3.2 Trigger
+The user selects the search bar.
+
+#### 4.3.3 Precondition
+The user has an idea of what to terms to search with.
+
+#### 4.3.4 Regular Path
+- The user types their search terms
+- The user presses the `ENTER` key or presses the seach button
+- The application displays the search result for the user
+
+#### 4.3.5 Postcondition
+- The user has either selected a sample and is on the sample detail page or the user has already 
+found the inforamtion they need.
+
+#### 4.3.6 Exception Paths
+- The user decides to use another features of the application
+- The user decides to stop using the application
+
+#### 4.3.7 Related Nonfunctional Requirements
+
+### 4.4 Use Case Name: View details about a sample
+#### 4.4.1 Description and Priority
+The sample detail page is where all of the sample details are presented to the user. The page 
+provides a comprehensive view of the details about a sample, including the two Genome Karyotype 
+Plots (4.1) generated from the curated details about provided by the backend API.
+
+#### 4.4.2 Trigger
+- The user navigates to a sample detail page by:
+  - Selecting a sample from all viewable samples list (4.2) 
+  - Selecting a sample from the sample search results (4.3)
+
+#### 4.4.3 Precondition
+The user has a foundational understanding of the scientific information presented about the sample.
+
+#### 4.4.4 Regular Path
+- The user inspects the complete details about the listed on the page
+- The user inspects the Genome Karyotype Plot and selects a range to view in detail
+- The user inspects the Genome Interval Plot to view the selected region in detail
+
+#### 4.4.5 Postcondition
+The user has found the information they were interested in about the sample.
+
+#### 4.4.6 Exception Paths
+- The user decides to look for another sample 
+- The user decides to stop using the application
+
+#### 4.4.7 Related Nonfunctional Requirements
+- The sample details should be organized in a table format
+- The Genome Karyotype Plots should be displayed with a minimum of 900px of width
+
+## 5. Additional Nonfunctional Requirements
+### 5.1: Critical components must have automated testing written to validate t
+### 5.2: Automated tests must be run prior to merging code in order to assure stability
+### 5.3: All component and module creation should be intended solely for use with the Angular web
+framework.
+### 5.4: When possible, all code contributions should be created as component modules for easy reuse
+across this and other applications at The Jackson Laboratory
 
 ## Appendix
-### Diagram One: 
-    - TBD
-### Diagram Two:
-    - TBD
