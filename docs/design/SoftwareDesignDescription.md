@@ -1,8 +1,8 @@
-Software Design Documentation
-Project: HaploQA / CS5500 Project
-Authors: Alexander Berger, Fangrui Guo
-Stakeholders: Dave Walton, Anna Lamoureux, Laura Reinholdt
-Version: 1.1
+# Software Design Documentation
+#### Project: HaploQA / CS5500 Project
+#### Authors: Alexander Berger, Fangrui Guo
+#### Stakeholders: Dave Walton, Anna Lamoureux, Laura Reinholdt
+#### Version: 1.1
 
 # 1. Introduction 
 ## 1.1 Purpose 
