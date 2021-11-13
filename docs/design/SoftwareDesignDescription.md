@@ -62,7 +62,11 @@ Data will be provided by an API developed and defined by The Jackson Laboratory.
 # 5. Architecture and Component Design
 ## 5.1 Architecture
 ### 5.1.1 Explanation of Software Architecture
+Data-Flow architecture: the target of GKP app is to analyze genome data and data visualization. So that a data flow architecture is good to fit for the design.
 ### 5.1.2 Architectural Diagram
+
+
+
 ## 5.2 Components
 ### 5.2.1 Explanation of Software Components
 ### 5.2.2 Software Component Diagram
