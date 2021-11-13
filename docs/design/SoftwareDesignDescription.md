@@ -63,18 +63,27 @@ Data will be provided by an API developed and defined by The Jackson Laboratory.
 ## 5.1 Architecture
 ### 5.1.1 Explanation of Software Architecture
 Data-Flow architecture: the target of GKP app is to analyze genome data and data visualization. So that a data flow architecture is good to fit for the design.
+Data can be read from database or can be input by the users, then users can select the strains they want to analyze. After that, they can select data analysis models that apply on the strains. Finally, they can visualze the data analysis results.
 ### 5.1.2 Architectural Diagram
-
-
+![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/architecture%20design.png)
 
 ## 5.2 Components
 ### 5.2.1 Explanation of Software Components
+The entry of the app is Data upload, strains data can be upload and ready to be analyzed here. The second part is the strain select part, users can select the target strains to be analyzed here. 
+The Data analysis separated in two part. One is the front part, in which users can apply models to the strains. The other part is the model modules where all the models are stored. Models can be added, deleted or modified from the backend.
+The Data visualization separated in two part as well. Similarly, one is the frontend, another one is the backend.
+Additionally, there is a result summary part, which users can download the analyzed results and plots.
 ### 5.2.2 Software Component Diagram
+![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/component%20design.png)
 
 # 6. Interface Design
 ## 6.1 Explanation of Interface Design
+Interface are designed based on the working flow. There is no fancy design of the interface since it's a scientific app. Generally, there is a name, logo, and introduction chart at the top of each page. 
 ## 6.2 Wireframes
-
+![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceA.jpeg)
+![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceB.jpeg)
+![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceC.jpeg)
+![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceD.jpeg)
 # 7. Procedural Design
 ## 7.1 Impact/Priority diagram of features
 ## 7.2 list of milestones, with detailed sub-lists of accomplishments
