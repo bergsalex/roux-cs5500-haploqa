@@ -1,6 +1,6 @@
 # Team Member Assignment and Contract 
 ## Roux HaploQA
-#### Version 1.0.0 (September 30th, 2021)
+#### Version 2.0.0 (November 8th, 2021)
 This document is tracked in version control. See the git repository for the full history of this 
 document. Changes to this document are only to be made after full approval by the team, see details
 below.
@@ -11,28 +11,14 @@ and review each other's work (see the "Organization/Justification" section below
 adopt the following "boundary spanning" roles. Once we have an initial set of requirements and have
 had a chance to meet with the entire team we will consider moving to the "internal roles"
 
-### Boundary Spanning Roles
-We will adopt these roles in the earliest stages of our project as we gather requirements and meet
-with the clients and stakeholders.
-
-- Ambassador: Jasmine Owens
-  - Represent the team to outside stakeholders (class)
-- Scout: Sanyami Shah
-  - Research existing tools, technologies, and solutions relevant to the problem
-- Guard: Fangrui Guo
-  - Advocates on behalf of the team to protect our ability to complete quality work 
-- Sentry & Coordinator: Alexander Berger
-  - Controls information between client/stakeholder and team, coordinates communication 
-  within the team 
-
 ### Internal Roles
 The following roles are preliminary. We will fully define each role and assign initial leads after
 our first meeting with the entire team present.
 - Team Lead: Alexander Berger
 - Development Manager: All members (for now)
 - Planning Manager: Fangrui Guo
-- Quality/Process Manager: Jasmine Owens
-- Requirements/Support Manager: Sanyami Shah
+- Quality/Process Manager: Fangrui Guo
+- Requirements/Support Manager: Alexander Berger
 
 ## Team Member Organization/Justification:
 Open - members can switch positions, support each other, and review each other's work
@@ -73,8 +59,5 @@ to me, and to the change system proposed by this document.
 > Add your name and the date of your signature on a new line below
 
 ### Type your name/date here. Putting anyone else’s name here will be considered academic dishonesty. 
-- Alexander Berger (October 1st, 2021)
-- Jasmine Owens (October 2, 2021)
-- Sanyami Shah (October 4th, 2021)
-- Fangrui Guo(October 11th, 2021)
+- Alexander Berger (November 8th, 2021)
 -
