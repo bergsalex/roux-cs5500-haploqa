@@ -1,10 +1,8 @@
-# Project Proposal - Version 1.1.0
+# Project Proposal - Version 1.2.0
 
 ### Team Name: Roux HaploQA 
 
 ### Team Members:
-- Sanyami Shah
-- Jasmine Owens
 - Fangrui Guo
 - Alexander Berger
 
