@@ -21,7 +21,7 @@
               "apps/haplo-qa/src/favicon.ico",
               "apps/haplo-qa/src/assets"
             ],
-            "styles": ["apps/haplo-qa/src/styles.scss"],
+            "styles": ["apps/haplo-qa/src/styles.scss", "apps/haplo-qa/src/jax-theme.scss"],
             "scripts": []
           },
           "configurations": {
