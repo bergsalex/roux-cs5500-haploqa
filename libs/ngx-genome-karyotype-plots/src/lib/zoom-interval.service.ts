@@ -79,7 +79,9 @@ export class ZoomIntervalService {
     zoom.on('zoom', () => {
       if(this._zoomInterval !== null) {
         // TODO: This reference to `d3.event` is broken
-        let newIntervalSize = Math.round(this._zoomInitWidthBp / d3.event.scale);
+        // let newIntervalSize = Math.round(this._zoomInitWidthBp / d3.event.scale);
+        // TODO: Replace filler code below with rewritten code from above
+        let newIntervalSize = 0;
         if(newIntervalSize !== this._zoomInterval.size) {
           this._zoomInterval.size = newIntervalSize;
           let growthBp = newIntervalSize - this._zoomInitWidthBp;
