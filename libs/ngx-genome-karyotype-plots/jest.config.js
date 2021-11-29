@@ -1,3 +1,6 @@
+const esModules = ['d3', 'd3-tip' ].join('|');
+
+
 module.exports = {
   displayName: 'ngx-genome-karyotype-plots',
   preset: '../../jest.preset.js',
@@ -12,9 +15,7 @@ module.exports = {
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },
-  transformIgnorePatterns: [
-    '/node_modules/(?!d3-(array|format))'
-  ],
+  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
