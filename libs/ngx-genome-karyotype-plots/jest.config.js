@@ -1,5 +1,4 @@
-const esModules = ['d3', 'd3-tip', 'internmap'].join('|');
-
+const esModules = ['d3', 'd3-tip', 'd3-array', 'internmap', 'delaunator', 'robust-predicates'].join('|');
 
 module.exports = {
   displayName: 'ngx-genome-karyotype-plots',
