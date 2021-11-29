@@ -13,7 +13,7 @@ export class GenomeKaryotypePlotComponent implements OnInit {
   @Input() width: number = 900;
   @Input() height: number = 900;
   @Input() margin: number = 50;
-  @Input() chrSizes!: ChrSize[];
+  @Input() chrSizes: ChrSize[] = [];
 
   constructor(private chrIdsSvc: ChrIdsService) { }
 
