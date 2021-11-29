@@ -1,4 +1,4 @@
-const esModules = ['d3', 'd3-tip' ].join('|');
+const esModules = ['d3', 'd3-tip', 'internmap'].join('|');
 
 
 module.exports = {
