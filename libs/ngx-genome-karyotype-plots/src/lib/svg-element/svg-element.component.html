@@ -1,1 +1,17 @@
-<figure id="svgplot"></figure>
+<figure id="svgplot">
+  <svg #svgElem
+       class="haplotype-plot"
+       id="hapkaryoplot-svg"
+       [attr.width]="width"
+       [attr.height]="height">
+    <g #plotElem
+       class="plot"
+       transform="translate(0, 15)"
+       [attr.height]="height - 60">
+      <g #plotContentsGroupElem
+         class="plot-contents"></g>
+      <!-- TODO: Check usage of the snps-* class here -->
+      <g class="snps-karyoplot"></g>
+    </g>
+  </svg>
+</figure>
