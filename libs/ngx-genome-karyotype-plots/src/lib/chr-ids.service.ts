@@ -7,27 +7,27 @@ export interface ChrSize {
   startPos: number;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ChrIdsService {
   /** This is a helper class to organize tools related to working with chromosome ids. **/
 
   public chrIDs: string[] = [];
-  public minStartBp: number | null = null;
-  public maxEndBp: number | null = null;
+  public chrSizes: ChrSize[] = [];
+  public minStartBp!: number;
+  public maxEndBp!: number;
   public chrSizesHash: {[key: string]: ChrSize} = {};
 
-  constructor() { }
+  constructor() {}
 
   public initChrIds(chrSizes: ChrSize[]): void {
-    chrSizes.forEach((currChr) => {
-      if (this.minStartBp === null || currChr.startPos < this.minStartBp) {
+    this.chrSizes = chrSizes;
+    this.chrSizes.forEach((currChr) => {
+      if (typeof this.minStartBp === 'undefined' || currChr.startPos < this.minStartBp) {
         this.minStartBp = currChr.startPos;
       }
 
       let currEnd = currChr.startPos + currChr.size;
-      if (this.maxEndBp === null || currEnd > this.maxEndBp) {
+      if (typeof  this.maxEndBp === 'undefined' || currEnd > this.maxEndBp) {
         this.maxEndBp = currEnd;
       }
 
