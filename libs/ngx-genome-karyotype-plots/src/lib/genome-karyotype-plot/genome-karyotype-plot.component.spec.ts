@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GenomeKaryotypePlotComponent } from './genome-karyotype-plot.component';
+import {SvgElementComponent} from "../svg-element/svg-element.component";
 
 describe('GenomeKaryotypePlotComponent', () => {
   let component: GenomeKaryotypePlotComponent;
@@ -8,7 +9,7 @@ describe('GenomeKaryotypePlotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenomeKaryotypePlotComponent ]
+      declarations: [ GenomeKaryotypePlotComponent, SvgElementComponent ],
     })
     .compileComponents();
   });

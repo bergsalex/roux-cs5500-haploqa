@@ -7,7 +7,9 @@ export interface ChrSize {
   startPos: number;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ChrIdsService {
   /** This is a helper class to organize tools related to working with chromosome ids. **/
 
