@@ -22,4 +22,9 @@ describe('SvgElementComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // TODO TEST: this.svg should be set after ngAfterViewInit
+  // TODO TEST: this.plot should be set after ngAfterViewInit
+  // TODO TEST: this.plotContentsGroup should be set after ngAfterViewInit
+  // TODO TEST: mousePositionInfo should return correct info
 });

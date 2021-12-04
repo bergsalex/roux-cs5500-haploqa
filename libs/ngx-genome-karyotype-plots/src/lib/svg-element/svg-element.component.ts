@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
 import * as d3 from "d3";
 
 @Component({
@@ -6,7 +6,7 @@ import * as d3 from "d3";
   templateUrl: './svg-element.component.html',
   styleUrls: ['./svg-element.component.scss']
 })
-export class SvgElementComponent implements OnInit {
+export class SvgElementComponent implements AfterViewInit {
 
   // TODO: Fix these types
   public svg!: any;
@@ -18,32 +18,24 @@ export class SvgElementComponent implements OnInit {
 
   public chrOrdinalScale: any;
 
+  public snpBar!: any;
+
   @Input() name: string = 'SVG Common!';
   @Input() width: number = 900;
   @Input() height: number = 900;
   @Input() margin: number = 50;
   @Input() intervalMode: boolean = false;
 
-  constructor() { }
+  @ViewChild('svgElem') public svgElem!: ElementRef<HTMLElement>;
+  @ViewChild('plotElem') public plotElem!: ElementRef<HTMLElement>;
+  @ViewChild('plotContentsGroupElem') public plotContentsElem!: ElementRef<HTMLElement>;
 
-  ngOnInit(): void {
-    this.createSvg();
-  }
+  constructor() {}
 
-  private createSvg(): void {
-    this.svg = d3.select("figure#hapkaryoplot")
-      .append("svg")
-      .attr("width", this.width + (this.margin * 2))
-      .attr("height", this.height + (this.margin * 2))
-      .append("g")
-      .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
-    this.plot = this.svg
-      .append("g")
-      .attr("class", "plot")
-      .attr("transform", "translate(0, 15)");
-    this.plotContentsGroup = this.plot
-      .append("g")
-      .attr("class", "plot-contents")
+  ngAfterViewInit() {
+    this.svg = d3.select(this.svgElem.nativeElement);
+    this.plot = d3.select(this.plotElem.nativeElement);
+    this.plotContentsGroup = d3.select(this.plotContentsElem.nativeElement);
   }
 
   public mousePositionInfo(): {} {
