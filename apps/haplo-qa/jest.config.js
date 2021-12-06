@@ -1,3 +1,5 @@
+const esModules = ['d3', 'd3-tip', 'd3-array', 'internmap', 'delaunator', 'robust-predicates'].join('|');
+
 module.exports = {
   displayName: 'haplo-qa',
   preset: '../../jest.preset.js',
@@ -13,6 +15,7 @@ module.exports = {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },
   // This along with esModules const above prevent errors during build
+  transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
