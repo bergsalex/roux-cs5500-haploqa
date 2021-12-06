@@ -84,9 +84,10 @@ Interface are designed based on the working flow. There is no fancy design of th
 ![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceB.jpeg)
 ![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceC.jpeg)
 ![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceD.jpeg)
+
 # 7. Procedural Design
 ## 7.1 Impact/Priority diagram of features
-
+![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/diagrams-of-features.jpeg)
 ## 7.2 list of milestones, with detailed sub-lists of accomplishments
 1. initial the project: we settle down the teams organization, created some documents and assign the tasks to each member. We also settle down the working rule, we will use the agile development.
 2. Complete the design documents: we worked on the documents and completed the SDD, workflow documents and team change documents.
@@ -113,3 +114,4 @@ The main architectural design we used are:
 1. Modularity: due to the requirement, stakeholders expected that the data analyzed package part are loose connected with the other part of the app so that they can make modifications on that module easily. And due to our experience, scientific analysis app requires updates and modification for different part a lot, so we tried to make the architecture modular.
 2. Abstraction: to make the app neat to our users, we tired to hide the irrelevant data from them and only expose the part they should interact with or they have some insights about it and maybe want to modify it.
 ## 9.2 Component Design Principles
+CRP and REP
