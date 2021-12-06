@@ -1,1 +1,9 @@
-<p>genome-interval-plot works!</p>
+<ng-content select="[slot=header]"></ng-content>
+<div id="hapintervalplot">
+  <haploqa-modules-svg-element [name]="name"
+                               [width]="width"
+                               [height]="height"
+                               [margin]="margin">
+  </haploqa-modules-svg-element>
+</div>
+<ng-content select="[slot=footer]"></ng-content>
