@@ -59,6 +59,8 @@ other directions.
 # 4. Data Design 
 Data will be provided by an API developed and defined by The Jackson Laboratory.
 
+Example Data can be obtained from the existing legacy version of the application at: https://haploqa.jax.org/
+
 # 5. Architecture and Component Design
 ## 5.1 Architecture
 ### 5.1.1 Explanation of Software Architecture
@@ -102,11 +104,47 @@ Interface are designed based on the working flow. There is no fancy design of th
   Adding readme with library usage information
   Adding a strain map service
   
-  
-  
+### Development Milestones
+#### Milestone 1: Tier 1 Priority
+- Feature 4.1: Allow Developers to embed the Genome Karyotype Plots as a module
+  - Upgrade d3 v3 to d3 v7
+  - Data can be passed into the plots from a parent application component
+  - Demonstrate build, setup and usage of plot components in a parent application 
+  - The module's usage needs to be well documented and made available for end-user developers. 
+  - The visualizations will be resonponsive to user interaction. 
+  - The user will interact with the visualization in the same way they did with the previous version. 
+  - The visualizations will report errors to the developer to use as they need.
+
+#### Milestone 2: Tier 2 Priority
+- Feature 4.2: View a list of all samples
+  - The user can see details about each sample
+  - Expands the usability of this listing by including additional information
+  - The listing page has to be usable on a desktop browser
+- Feature 4.3: Search for a sample
+  - 
+- Feature 4.4: View details about a sample
+  - The sample details should be organized in a table format 
+  - The Genome Karyotype Plots should be displayed with a minimum of 900px of width
+
 # 8. Pattern(s) Used
 ## 8.1 Architectural
+- Component Based
+  - The application to be built will utilize a component architectural pattern to allow rapid reuse of plotting functionality within different Angular client applications.
+- Client-Server
+  - The application to be built will fit into a client-server architectural pattern with the delivered application acting as the client.
+- Representational state transfer
+  - The client and server will communicate using Representational State Transfer (ReST) and Javascript Object Notation (JSON).
+- Service-oriented
+  - The client application will utilize a service oriented architectural pattern for using ReST and JSON to obtain data from one or more servers.
 ## 8.2 Software
+- Singletons
+  - Singleton service instance will be used to share data and functionality across plot groups, which are combinations of interval and karyotype plots that use the same data.
+- Dependency Injection
+  - Dependency injection will be utilized to provide components with instance of singleton service.
+- Observer
+  - The observer patter will be used to share events between components. An example event would be clicking the kayotype plot selects a detail region in the interval plot.
+- Composite
+  - The composite pattern will be used to combine objects, services and functionality into higher level entities
 
 # 9. Design Concepts Used
 ## 9.1 Architectural Design Considerations
