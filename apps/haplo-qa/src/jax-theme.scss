@@ -36,3 +36,269 @@ $haplo-qa-theme: mat.define-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($haplo-qa-theme);
+
+
+.h2, h2 {
+  font-size: 25px;
+  text-align: center;
+}
+
+#alertDiv {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  z-index: 10000;
+  font-size: 18px;
+  top: 100%;
+}
+
+#run-haplotyping {
+  margin-left: 1.5vw;
+}
+
+img {
+  border: 1px #bbb solid;
+  border-radius: 5px;
+  padding: 5px;
+  max-width:99%;
+  max-height:99%;
+}
+
+.logo {
+  float: left;
+  border: none;
+  padding: 10px;
+  max-height: 50px;
+}
+
+.img-float {
+  margin: 20px 0 20px 0;
+}
+
+.img-inline-left {
+  margin: 20px 25px 20px 0;
+}
+
+.img-inline-right {
+  float: right;
+  margin: 20px 0 20px 25px;
+}
+
+.tooltip {
+  padding: 5px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+#user-status {
+  font-weight: bold;
+  color: #666666;
+  padding-left: 10px;
+  line-height: 30px;
+  border-bottom: 1px #666 solid;
+  margin-bottom: 5px;
+}
+
+select {
+  height: 30px;
+  width: 225px;
+}
+
+th {
+  white-space: nowrap;
+}
+
+.axis text {
+  font-size: 12px !important;
+}
+
+.required {
+  color: #ff0000;
+}
+
+.haplotype-plot {
+  background: #e8e8e8;
+  display: block;
+  margin: 2px auto 10px auto;
+}
+
+.readonly-haplotypes-panel {
+  display: block;
+  padding-left: 10%;
+}
+
+.black {
+  color: #000;
+}
+
+.carousel-control.left {
+  background-image: none;
+}
+
+.carousel-control.right {
+  background-image: none;
+}
+
+.readonly-comp-haplotypes-panel {
+  display: block;
+  padding-left: 10%;
+}
+
+.no-data-overlay-bg {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.no-data-overlay-text {
+  fill: #666;
+  font-size: 50px;
+}
+
+.sample-label {
+  font-size: 18px;
+  display: block;
+  width: 200px;
+  height: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.bar {
+  fill: #ffffff;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dropdown-form > div.form-group {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0px;
+}
+
+.hap1 {
+  fill: rgba(106, 110, 116, 0.75);
+}
+
+.hap2 {
+  fill: rgba(52, 44, 126, 0.75);
+}
+
+.hap3 {
+  fill: rgba(164, 196, 231, 0.75);
+}
+
+.hap4 {
+  fill: rgba(42, 124, 57, 0.75);
+}
+
+.hap5 {
+  fill: rgba(70, 175, 210, 0.75);
+}
+
+.hap6 {
+  fill: rgba(134, 194, 38, 0.75);
+}
+
+.hap7 {
+  fill: rgba(112, 151, 48, 0.75);
+}
+
+.hap8 {
+  fill: rgba(245, 231, 0, 0.75);
+}
+
+.hap9 {
+  fill: rgba(177, 144, 146, 0.75);
+}
+
+.hap10 {
+  fill: rgba(192, 114, 48, 0.75);
+}
+
+.hap11 {
+  fill: rgba(231, 128, 118, 0.75);
+}
+
+.hap12 {
+  fill: rgba(222, 140, 65, 0.75);
+}
+
+.hap13 {
+  fill: rgba(222, 114, 165, 0.75);
+}
+
+.hap14 {
+  fill: rgba(151, 62, 101, 0.75);
+}
+
+.hap15 {
+  fill: rgba(142, 52, 137, 0.75);
+}
+
+.hap16 {
+  fill: rgba(201, 50, 42, 0.75);
+}
+
+.hap17 {
+  fill: rgba(194, 198, 204, 0.75);
+}
+
+.hap18 {
+  fill: rgba(122, 39, 43, 0.75);
+}
+
+.hap19 {
+  fill: rgba(122, 49, 134, 0.75);
+}
+
+.hap20 {
+  fill: rgba(53, 136, 148, 0.75);
+}
+
+.hap21 {
+  fill: rgba(61, 135, 222, 0.75);
+}
+
+.hap22 {
+  fill: rgba(229, 223, 143, 0.75);
+}
+
+.pos-ctrl-point {
+  fill: red;
+}
+
+.neg-ctrl-point {
+  fill: blue;
+}
+
+.elem-overlay {
+  display: table;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+  /*border: 2px dashed gray;*/
+  border: none;
+  font-family: sans-serif;
+  font-size: 3em;
+  color: gray;
+}
+.elem-overlay > span {
+  display: table-cell;
+  /*vertical-align: middle;*/
+  vertical-align: top;
+  text-align: center;
+}

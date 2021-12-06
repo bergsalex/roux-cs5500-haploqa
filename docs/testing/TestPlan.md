@@ -8,6 +8,7 @@ Testing will be conducted early and often by developers on their local machines,
 be automatically run upon creation of a "pull request" on github.com. Testing will also be run
 upon a successful merge to the `main` branch after a "pull request" is accepted.
 
+
 Specific test cases use the most current version of the project's 
 [Test Case Template](./TestCaseTemplate.md).
 
@@ -15,17 +16,10 @@ Specific test cases use the most current version of the project's
 ESLint will be used for static code quality checking. ESLint looks for syntax, logic, layout, formatting, 
  and code suggestions.
 
->ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, 
+> ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code, 
 > with the goal of making code more consistent and avoiding bugs.
 
-
 ## Unit Tests
-Unit tests provide testing of individual modules, classes, or functions. This 
-testing is best done as you develop. 
-
-Describe how you will break your tests into unit tests and plan out some of your
-unit tests. 
-
 Each component and service will be accompanied by a test definition which must test:
 - The component/service can be imported
 - The component/service can be created
