@@ -86,12 +86,30 @@ Interface are designed based on the working flow. There is no fancy design of th
 ![](https://github.com/bergsalex/roux-cs5500-haploqa/blob/feature/software-design-description-1/docs/design/InterfaceD.jpeg)
 # 7. Procedural Design
 ## 7.1 Impact/Priority diagram of features
-## 7.2 list of milestones, with detailed sub-lists of accomplishments
 
+## 7.2 list of milestones, with detailed sub-lists of accomplishments
+1. initial the project: we settle down the teams organization, created some documents and assign the tasks to each member. We also settle down the working rule, we will use the agile development.
+2. Complete the design documents: we worked on the documents and completed the SDD, workflow documents and team change documents.
+3. Adding the required library: through the developing, we gradually discovered the library we required and we add all the required library. Besides, we also tried to limit the library we totally used in order to keep the app as clear as possible.
+4. Add Service 1: we add ChrldsService, dataCache Service and ZoomInterval Service
+5. implement data inputs: Feature/implement data inputs for genome karyotype plots 31
+6. Re-structure:Moving common svg component func into svg-element common component. 
+  Replacing d3 dom manipulation with angular native.
+  Adding static data for development
+7. Implement the app in more detailed direction:
+  Feature/add an svg tools service to hold common d3 dom manipulation code 45
+  Adding readme with library usage information
+  Adding a strain map service
+  
+  
+  
 # 8. Pattern(s) Used
 ## 8.1 Architectural
 ## 8.2 Software
 
 # 9. Design Concepts Used
 ## 9.1 Architectural Design Considerations
+The main architectural design we used are:
+1. Modularity: due to the requirement, stakeholders expected that the data analyzed package part are loose connected with the other part of the app so that they can make modifications on that module easily. And due to our experience, scientific analysis app requires updates and modification for different part a lot, so we tried to make the architecture modular.
+2. Abstraction: to make the app neat to our users, we tired to hide the irrelevant data from them and only expose the part they should interact with or they have some insights about it and maybe want to modify it.
 ## 9.2 Component Design Principles
