@@ -37,14 +37,16 @@ export class GenomeKaryotypePlotComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // NOTE: We need to do this SVG initialization after view init since the SVG is a subcomponent
-    // and doesn't exist until then.
-    this.svgTools.init();
-    this.svgTools.updateAxes(this.svgComponent);
-    // TODO: Check usage of this
-    this.svgTools.drawNoDataOverlay(this.svgComponent, 'Loading Data', 30);
-    this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 900);
-    this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
+    if (typeof this.sample !== 'undefined') {
+      // NOTE: We need to do this SVG initialization after view init since the SVG is a subcomponent
+      // and doesn't exist until then.
+      this.svgTools.init();
+      this.svgTools.updateAxes(this.svgComponent);
+      // TODO: Check usage of this
+      this.svgTools.drawNoDataOverlay(this.svgComponent, 'Loading Data', 30);
+      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 900);
+      this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
+    }
   }
 
   public handleClick(pos: MousePositionInfo): void {

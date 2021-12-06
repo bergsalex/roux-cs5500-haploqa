@@ -14,7 +14,11 @@ export class HaplotypesPanelComponent implements OnInit {
   constructor(private strainSvc: StrainMapService, private svgTools: SvgToolsService) { }
 
   get contributingStrains(): string[] {
-    return this.sample.contributing_strains;
+    if (typeof this.sample === 'undefined') {
+      return [];
+    } else {
+      return this.sample.contributing_strains;
+    }
   }
 
   public strainIndex(strainName: string): number {

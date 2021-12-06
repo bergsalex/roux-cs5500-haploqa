@@ -19,7 +19,7 @@ import {DataCacheService} from "../data-cache.service";
 export class PlotContainerComponent implements OnInit {
 
   @Input() chrSizes: ChrSize[] = mm10ChrSizes;
-  @Input() strainMap: any
+  @Input() strainMap: {} = {};
 
   constructor(private chrIdsSvc: ChrIdsService,
               private strainSvc: StrainMapService) { }

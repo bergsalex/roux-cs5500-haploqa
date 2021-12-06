@@ -19,7 +19,7 @@ export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
   @Input() margin: number = 50;
   @Input() chrSizes: ChrSize[] = mm10ChrSizes;
 
-  @Input() strainMap: any;
+  @Input() strainMap: any = {};
   @Input() sample: any;
   @Input() haploData: any;
   @Input() snpData: any;
@@ -37,12 +37,14 @@ export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.svgTools.init(true);
-    this.svgTools.updateAxes(this.svgComponent);
-    // TODO: Check usage of this
-    this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
-    this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 0);
-    this.svgTools.updateSNPBar(this.svgComponent, this.snpData);
+    if (typeof this.sample !== 'undefined') {
+      this.svgTools.init(true);
+      this.svgTools.updateAxes(this.svgComponent);
+      // TODO: Check usage of this
+      this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
+      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 0);
+      this.svgTools.updateSNPBar(this.svgComponent, this.snpData);
+    }
   }
 
 }
