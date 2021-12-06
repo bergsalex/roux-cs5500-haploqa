@@ -1,5 +1,5 @@
 <mat-toolbar color="accent">
-  <span>HaploQA</span>
+  <h1>HaploQA</h1>
 </mat-toolbar>
 
 
@@ -7,15 +7,25 @@
   <h2>Genome Karyotype Plot</h2>
 </div>
 
-<p data-display-when="sample-edit" style="display: none;">
-  You can modify the "Contributing Haplotype Strains" below and click "Save Edits". This will
-  cause the haplotype structure of this strain to be inferred based on these settings (using a hidden markov
-  model) and rendered in a plot below.
-</p>
-<ngx-genome-karyotype-plot></ngx-genome-karyotype-plot>
-<!--<div>-->
-<!--  -->
-<!--</div>-->
-<!--<div>-->
-<!--  <ngx-genome-interval-plot></ngx-genome-interval-plot>-->
-<!--</div>-->
+<ngx-genome-plot-container
+  [chrSizes]="chrSizes"
+  [strainMap]="strainMap">
+  <ngx-genome-karyotype-plot
+    [sample]="sample"
+    [haploData]="haploData">
+    <ngx-genome-haplotype-panel [sample]="sample" slot="header">
+      <div slot="header"><h4><strong>Contributing Haplotype Strains:</strong></h4></div>
+    </ngx-genome-haplotype-panel>
+  </ngx-genome-karyotype-plot>
+
+  <ngx-genome-interval-plot
+    [chrSizes]="chrSizes"
+    [strainMap]="strainMap"
+    [sample]="sample"
+    [haploData]="haploData"
+    [snpData]="snpData">
+    <ngx-genome-haplotype-panel [sample]="sample" slot="footer">
+      <mat-icon></mat-icon>
+    </ngx-genome-haplotype-panel>
+  </ngx-genome-interval-plot>
+</ngx-genome-plot-container>

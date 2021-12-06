@@ -73,6 +73,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+<<<<<<< Updated upstream
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -86,3 +87,10 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+=======
+# Pyre type checker
+.pyre/
+
+# PyCharm
+.idea/
+>>>>>>> Stashed changes

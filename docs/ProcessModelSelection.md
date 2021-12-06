@@ -14,7 +14,11 @@ both in effort delivery and communication, planning and design.
 ### How will your team carry out this model?
 
 ### Backlog
+<<<<<<< Updated upstream
 Once we complete our [Software Requirements Specification](./SoftwareRequirementsSpecification.md),
+=======
+Once wil complete our [Software Requirements Specification](./SoftwareRequirementsSpecification.md),
+>>>>>>> Stashed changes
 we will have an all hand team meeting to create our initial backlog. The backlog will include not
 just project requirements or features that provide business value for the customer, but also all 
 project requirements for the completion of the Roux - CS5500 Project
