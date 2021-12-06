@@ -3,17 +3,18 @@
   <a *ngFor="let strain of contributingStrains"
      href="{{this.strainColor(strain)}}}"
      class="hap-link hap-link{{strainIndex(strain)}}"
+     style="text-decoration: none"
      (mouseover)="highlightStrain(strain)"
      (mouseout)="clearStrainHighlight()">
     <span>
       <span id="sample-color-icon"
-         [ngStyle]="{'color': this.strainColor(strain)}"> &#x25A0;{{strain}} </span>
+         [ngStyle]="{'color': this.strainColor(strain)}"> &#x25A0;</span>
       <!-- TODO: Figure out why MatIcon doesn't get built correctly in the library -->
 <!--    <mat-icon id="sample-color-icon"-->
 <!--              [ngStyle]="{'color': this.strainColor(strain)}">-->
 <!--      stop-->
 <!--    </mat-icon>-->
-<!--      {{strain}}-->
+      {{strain}}
     </span>
   </a>
 </div>
