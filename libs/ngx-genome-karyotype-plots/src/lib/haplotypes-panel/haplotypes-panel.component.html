@@ -1,0 +1,19 @@
+<div class="readonly-haplotypes-panel" data-display-when="sample-readonly">
+  <ng-content select="[slot=header]"></ng-content>
+  <a *ngFor="let strain of contributingStrains"
+     href="{{this.strainColor(strain)}}}"
+     class="hap-link hap-link{{strainIndex(strain)}}"
+     (mouseover)="highlightStrain(strain)"
+     (mouseout)="clearStrainHighlight()">
+    <span>
+      <span id="sample-color-icon"
+         [ngStyle]="{'color': this.strainColor(strain)}"> &#x25A0;{{strain}} </span>
+      <!-- TODO: Figure out why MatIcon doesn't get built correctly in the library -->
+<!--    <mat-icon id="sample-color-icon"-->
+<!--              [ngStyle]="{'color': this.strainColor(strain)}">-->
+<!--      stop-->
+<!--    </mat-icon>-->
+<!--      {{strain}}-->
+    </span>
+  </a>
+</div>
