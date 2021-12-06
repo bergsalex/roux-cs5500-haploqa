@@ -1,9 +1,9 @@
-import { Injectable, Input } from "@angular/core";
+import {Injectable, Input} from "@angular/core";
 import { DataCacheService } from "./data-cache.service";
 import {SvgElementComponent} from "./svg-element/svg-element.component";
 import * as d3 from "d3";
 
-interface ChrInterval {
+export interface ChrInterval {
   size: number,
   chr: string,
   startPos: number,
@@ -16,10 +16,10 @@ interface ChrInterval {
 export class ZoomIntervalService {
 
   // TODO: Fix these types
-  private svgComp!: SvgElementComponent;
+  // private svgComp!: SvgElementComponent;
   public initZoomWidthBp = 10000000 - 1;
   private _zoomInterval!: ChrInterval;
-  private _zoomOverlayGroup!: any
+  // private _zoomOverlayGroup!: any
   private _zoomIntervalChange: boolean = false;
 
   private _refIntervalMovingX!: number;
@@ -43,34 +43,29 @@ export class ZoomIntervalService {
     this.dataCache.zoomInterval(ZoomIntervalService.defaultInterval);
   }
 
-  public init(svgComp: SvgElementComponent, newZoomInterval?: ChrInterval): void {
-    this.svgComp = svgComp;
-    this._zoomOverlayGroup = this.svgComp.svg.append("g").attr("class", "zoom-overlay");
-    this.zoomInterval(newZoomInterval);
+  private static zoomOverlayGroup(svgComp: SvgElementComponent): any {
+    return svgComp.svg.append("g").attr("class", "zoom-overlay");
   }
 
   public intervalIsSet(): boolean {
     return typeof this._zoomInterval !== 'undefined';
   }
 
-  public zoomInterval(newZoomInterval?: ChrInterval): ChrInterval {
+  public zoomInterval(svgComp: SvgElementComponent, newZoomInterval?: ChrInterval): ChrInterval {
+    let _zoomOverlayGroup = ZoomIntervalService.zoomOverlayGroup(svgComp);
     this._zoomInterval = this.dataCache.zoomInterval(newZoomInterval);
     this._zoomInitStartBp = this._zoomInterval.startPos;
     this._zoomInitWidthBp = this._zoomInterval.size;
-    if(this.intervalMode) {
-      // TODO: Emit an event here
-      // this.updateHaplotypes();
-      // this.updateSNPBar();
-    } else {
-      this._zoomOverlayGroup.selectAll("*").remove();
+    if(!this.intervalMode) {
+      _zoomOverlayGroup.selectAll("*").remove();
     }
 
     return this._zoomInterval;
   }
 
-  public addIntervalModeZoom(): void {
+  public addIntervalModeZoom(svgComp: SvgElementComponent): void {
     let zoom = d3.zoom()
-    this.svgComp.svg.call(zoom);
+    svgComp.svg.call(zoom);
     zoom.on('zoomstart', () => {
       if(this._zoomInterval !== null) {
         this._zoomInitStartBp = this._zoomInterval.startPos;
@@ -99,7 +94,7 @@ export class ZoomIntervalService {
       }
     });
     zoom.on('zoomend', () => {
-      zoom.scaleTo(this.svgComp.svg, 1);
+      zoom.scaleTo(svgComp.svg, 1);
     });
   }
 

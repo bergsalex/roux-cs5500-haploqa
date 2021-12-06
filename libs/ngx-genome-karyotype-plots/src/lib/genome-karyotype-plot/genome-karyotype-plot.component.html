@@ -1,12 +1,9 @@
-
-<div><strong>Contributing Haplotype Strains:</strong></div>
-
-<div class="readonly-haplotypes-panel" data-display-when="sample-readonly"></div>
-
+<ng-content select="[slot=header]"></ng-content>
 <div class="row" id="hapkaryoplot">
-<haploqa-modules-svg-element [name]="name"
-                             [width]="width"
-                             [height]="height"
-                             [margin]="margin">
-</haploqa-modules-svg-element>
+  <haploqa-modules-svg-element
+    [name]="name" [width]="width"
+    [height]="height" [margin]="margin"
+    (svgClick)="handleClick($event)">
+  </haploqa-modules-svg-element>
 </div>
+<ng-content select="[slot=footer]"></ng-content>

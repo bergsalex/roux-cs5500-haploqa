@@ -1,66 +1,79 @@
-import {Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
-import {ChrIdsService, ChrSize} from "../chr-ids.service";
-import {SvgElementComponent} from "../svg-element/svg-element.component";
-import {DataCacheService} from "../data-cache.service";
+import {Component, Input, ViewChild, AfterViewInit, Output, EventEmitter} from '@angular/core';
+import {ChrIdsService} from "../chr-ids.service";
+import {MousePositionInfo, SvgElementComponent} from "../svg-element/svg-element.component";
 import {SvgToolsService} from "../svg-tools.service";
-import {ZoomIntervalService} from "../zoom-interval.service";
-import {haploData, strainMap, strainNames, sample} from "../static-data"
-import {mm10ChrSizes} from "../mm10-data";
+import {ChrInterval, ZoomIntervalService} from "../zoom-interval.service";
+import {StrainMapService, StrainMap} from "../strain-map.service";
 
-/**
- *
- */
 @Component({
   selector: 'ngx-genome-karyotype-plot',
   templateUrl: './genome-karyotype-plot.component.html',
   styleUrls: ['./genome-karyotype-plot.component.scss'],
-  providers: [ZoomIntervalService, DataCacheService, ChrIdsService, SvgToolsService]
+  providers: [SvgToolsService]
 })
-export class GenomeKaryotypePlotComponent implements OnInit, AfterViewInit {
+export class GenomeKaryotypePlotComponent implements AfterViewInit {
 
   @Input() name: string = 'Genome Karyotype Plot';
   @Input() width: number = 900;
   @Input() height: number = 960;
   @Input() margin: number = 50;
-  @Input() chrSizes: ChrSize[] = mm10ChrSizes;
+  @Input() sample: any;
+  @Input() haploData: any;
 
+  @Output() mouseClick = new EventEmitter<ChrInterval>();
 
-  // @Input() strainMap: any;
-  // @Input() allSds: any;
-  // @Input() allTags: any;
-  // @Input() allOwners: any;
-  // @Input() sample: any;
-  // @Input() allEngTgts: any;
-  // @Input() haplotypePollingIntervalMillisecs: number = 2500;
-  // @Input() comparisonStatus: boolean = true;
-  // @ViewChild()
   // TODO: Implement download buttons
-  // TODO: Emit click events
-
 
   @ViewChild(SvgElementComponent)
   private svgComponent!: SvgElementComponent;
 
   constructor(private chrIdsSvc: ChrIdsService,
-              private svgTools: SvgToolsService,
-              private dataCache: DataCacheService,
-              private zoomTools: ZoomIntervalService) { }
+              private strainSvc: StrainMapService,
+              private zoomTools: ZoomIntervalService,
+              private svgTools: SvgToolsService) { }
 
-  ngOnInit(): void {
-    this.chrIdsSvc.initChrIds(this.chrSizes);
- }
+  get strainMap(): StrainMap {
+    return this.strainSvc.strainMap;
+  }
 
   ngAfterViewInit(): void {
-    // NOTE: Set initZoomWidthBp by setting the public attribute prior to calling init
-    // this.zoomTools.initZoomWidthBp = 10;
-    this.zoomTools.init(this.svgComponent);
+    if (typeof this.sample !== 'undefined') {
+      // NOTE: We need to do this SVG initialization after view init since the SVG is a subcomponent
+      // and doesn't exist until then.
+      this.svgTools.init();
+      this.svgTools.updateAxes(this.svgComponent);
+      // TODO: Check usage of this
+      this.svgTools.drawNoDataOverlay(this.svgComponent, 'Loading Data', 30);
+      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 900);
+      this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
+    }
+  }
 
-    // NOTE: We need to do this SVG initialization after view init since the SVG is a subcomponent
-    // and doesn't exist until then.
-    this.svgTools.init(this.svgComponent, strainMap);
-    // TODO: Check usage of this
-    this.svgTools.drawNoDataOverlay('Loading Data', 30);
-    this.svgTools.drawLegend(strainMap, sample.contributing_strains, 900);
-    this.svgTools.updateHaplotypes(haploData, strainMap, strainNames, this.chrIdsSvc.chrSizes);
+  public handleClick(pos: MousePositionInfo): void {
+    let chr = '';
+    let x = pos.x;
+    // TODO: We clearly need this line, but why do we subtract 15?? Where did we get that number?
+    let y = pos.y - 15;
+    // let y = pos.y;
+    let bpPos = this.svgTools.genomeScale.invert(x);
+    let ordinalHeight = this.svgTools.chrOrdinalScale.bandwidth();
+    for (let id of this.svgTools.yAxisIDs) {
+      let currY = this.svgTools.chrOrdinalScale(id);
+      if (y >= currY && y <= currY + ordinalHeight) {
+        chr = id;
+      }
+    }
+
+    if (chr !== '') {
+      const prevInterval = this.zoomTools.zoomInterval(this.svgComponent);
+      const newInterval: ChrInterval = {
+        size: prevInterval.size,
+        chr: chr,
+        startPos: Math.round(bpPos - prevInterval.size / 2.0),
+        endPos: prevInterval.startPos + prevInterval.size - 1
+      }
+      this.mouseClick.emit(newInterval);
+      this.zoomTools.zoomInterval(this.svgComponent, newInterval);
+    }
   }
 }

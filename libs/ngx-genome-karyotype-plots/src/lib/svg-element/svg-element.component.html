@@ -2,6 +2,10 @@
   <svg #svgElem
        class="haplotype-plot"
        id="hapkaryoplot-svg"
+       (click)="emitClick($event)"
+       (mousedown)="emitMouseDown()"
+       (mousemove)="emitMouseMove()"
+       (mouseup)="emitMouseUp()"
        [attr.width]="width"
        [attr.height]="height">
     <g #plotElem
@@ -11,7 +15,13 @@
       <g #plotContentsGroupElem
          class="plot-contents"></g>
       <!-- TODO: Check usage of the snps-* class here -->
-      <g class="snps-karyoplot"></g>
+      <g #snpBarsElem class="snp-bars"></g>
+      <g #axesElem class="axis"></g>
     </g>
+    <g #zoomElem class="zoom-overlay"></g>
+    <g #plotLegendElem
+       class="plot-legend"
+       [attr.transform]="'translate(30, ' + (height - margin) + ')'"
+       id="plot-legend"></g>
   </svg>
 </figure>
