@@ -38,8 +38,8 @@ export class SvgToolsService {
   public genomeScale!: d3.ScaleLinear<number, number, never>;
   public legend!: D3Selection;
 
-  private xAxisSize = 100;
-  private yAxisSize = 50;
+  private _xAxisSize = 100;
+  private _yAxisSize = 50;
   private _yAxisIDs: string[] = [];
 
   private intervalMode = false;
@@ -50,15 +50,8 @@ export class SvgToolsService {
               private zoomTools: ZoomIntervalService) { }
 
   public init(intervalMode: boolean = false) {
-    // this.svgComp = svgComponent;
     this.intervalMode = intervalMode;
-    // this.updateAxes(svgComponent);
   }
-
-  // private initAxes(): void {
-  //   this.axesGroup = this.svgComp.plot.append("g").attr("class", "axes");
-  //   this.updateAxes();
-  // }
 
   get yAxisIDs(): string[] {
     return this._yAxisIDs;
@@ -67,9 +60,6 @@ export class SvgToolsService {
   public updateAxes(svgComp: SvgElementComponent): void {
     this.axesGroup = svgComp.axes;
     this.axesGroup.selectAll("*").remove();
-    // if(this.intervalMode && this.zoomTools.intervalIsSet()) {
-    //   return;
-    // }
 
     let startBp: number;
     let endBp: number;
@@ -86,25 +76,25 @@ export class SvgToolsService {
 
     this.genomeScale = d3.scaleLinear()
       .domain([startBp, endBp])
-      .range([this.yAxisSize, svgComp.width - this.yAxisSize - 2]);
+      .range([this._yAxisSize, svgComp.width - this._yAxisSize - 2]);
     const genomeAxis = d3.axisBottom<number>(this.genomeScale)
       .tickFormat((x: number) => {return (x / 1000000) + ' Mb';});
 
     this.axesGroup.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + (svgComp.height - this.xAxisSize) + ")")
+      .attr("transform", "translate(0," + (svgComp.height - this._xAxisSize) + ")")
       .call(genomeAxis);
 
     this.chrOrdinalScale = d3.scaleBand()
       .domain(this.yAxisIDs)
-      .rangeRound([0, svgComp.height - this.xAxisSize])
+      .rangeRound([0, svgComp.height - this._xAxisSize])
       .padding(this.intervalMode ? 0.0 : 0.2);
     const yAxis = d3.axisLeft<string>(this.chrOrdinalScale)
       .tickFormat((x: string) => {return 'Chr' + x;})
       .tickPadding(0.2);
     this.axesGroup.append("g")
       .attr("class", "y axis")
-      .attr("transform", "translate(" + this.yAxisSize + ",0)")
+      .attr("transform", "translate(" + this._yAxisSize + ",0)")
       .call(yAxis);
   }
 
@@ -213,8 +203,6 @@ export class SvgToolsService {
 
           let currHaploStart;
           let currHaploEnd;
-          // currHaploStart = Math.max(currHaplo.start_position_bp, currChrSize.startPos);
-          // currHaploEnd = Math.min(currHaplo.end_position_bp, currChrSize.startPos + currChrSize.size);
 
           if(this.intervalMode) {
             currHaploStart = Math.max(currHaplo.start_position_bp, _zoomInterval.startPos);
@@ -247,8 +235,7 @@ export class SvgToolsService {
                   this.strainSvc.strainColor(currStrain1))
               })
               .on("mouseout", () => this.clearHaplotypeHightlight());
-            // eslint-disable-next-line no-prototype-builtins
-            if(haplotypeMap.hasOwnProperty(currStrain1)) {
+            if(Object.prototype.hasOwnProperty.call(haplotypeMap, currStrain1)) {
               currRect.style('fill', this.strainSvc.strainColor(currStrain1));
             }
           } else {
@@ -270,8 +257,7 @@ export class SvgToolsService {
                   this.strainSvc.strainColor(currStrain1))
               })
               .on("mouseout", () => this.clearHaplotypeHightlight());
-            // eslint-disable-next-line no-prototype-builtins
-            if(haplotypeMap.hasOwnProperty(currStrain1)) {
+            if(Object.prototype.hasOwnProperty.call(haplotypeMap, currStrain1)) {
               currRect.style('fill', this.strainSvc.strainColor(currStrain1));
             }
 
@@ -292,8 +278,7 @@ export class SvgToolsService {
                   this.strainSvc.strainColor(currStrain2))
               })
               .on("mouseout", () => this.clearHaplotypeHightlight());
-            // eslint-disable-next-line no-prototype-builtins
-            if(haplotypeMap.hasOwnProperty(currStrain2)) {
+            if(Object.prototype.hasOwnProperty.call(haplotypeMap, currStrain2)) {
               currRect.style('fill', this.strainSvc.strainColor(currStrain2));
             }
           }
@@ -386,14 +371,10 @@ export class SvgToolsService {
         let count = 0;
         const positions: number[] = [];
         Object.entries(_snpData).forEach(((value, position, snpData) => {
-          // console.log(position);
-          // console.log(i);
-          // console.log(i+bpPerBand);
           if (position >= i && position <= i+bpPerBand) {
             count++;
             // TODO: We might not need this check anymore
-            // eslint-disable-next-line no-prototype-builtins
-            if (snpData.hasOwnProperty(position)) {
+            if (Object.prototype.hasOwnProperty.call(snpData, position)) {
               positions.push(position);
             }
           }
