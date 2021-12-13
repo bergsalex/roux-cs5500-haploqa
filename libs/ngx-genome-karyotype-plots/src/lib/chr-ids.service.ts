@@ -19,8 +19,6 @@ export class ChrIdsService {
   public maxEndBp!: number;
   public chrSizesHash: {[key: string]: ChrSize} = {};
 
-  constructor() {}
-
   set chrSizes(newSizes: ChrSize[]) {
     this._chrSizes = newSizes;
     this.resetChrIds()

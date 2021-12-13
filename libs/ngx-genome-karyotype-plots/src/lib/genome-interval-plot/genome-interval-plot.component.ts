@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ChrIdsService, ChrSize} from "../chr-ids.service";
 import {StrainMapService} from "../strain-map.service";
-import {SvgToolsService} from "../svg-tools.service";
+import {SvgToolsService, SnpData} from "../svg-tools.service";
 import {SvgElementComponent} from "../svg-element/svg-element.component";
 import {mm10ChrSizes} from "../example-data/mm10-data"
 
@@ -22,7 +22,7 @@ export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
   @Input() strainMap: any = {};
   @Input() sample: any;
   @Input() haploData: any;
-  @Input() snpData: any;
+  @Input() snpData: SnpData | undefined;
 
   @ViewChild(SvgElementComponent)
   private svgComponent!: SvgElementComponent
@@ -42,7 +42,7 @@ export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
       this.svgTools.updateAxes(this.svgComponent);
       // TODO: Check usage of this
       this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
-      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 0);
+      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains);
       this.svgTools.updateSNPBar(this.svgComponent, this.snpData);
     }
   }

@@ -1,9 +1,9 @@
-import {ElementRef, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import * as d3 from "d3";
 // TODO: Figure out what to do about failing d3-tip import
 // import d3Tip from "d3-tip";
 import {ZoomIntervalService} from "./zoom-interval.service";
-import {SvgElementComponent} from "./svg-element/svg-element.component";
+import {SvgElementComponent, D3Selection} from "./svg-element/svg-element.component";
 import {ChrIdsService} from "./chr-ids.service";
 import {DataCacheService} from "./data-cache.service";
 import {ChrSize} from "./chr-ids.service";
@@ -33,10 +33,10 @@ export interface SnpBinItem {
 })
 export class SvgToolsService {
 
-  public axesGroup: any;
-  public chrOrdinalScale: any;
-  public genomeScale: any;
-  public legend!: any;
+  public axesGroup!: D3Selection;
+  public chrOrdinalScale!: any;
+  public genomeScale!: d3.ScaleLinear<number, number, never>;
+  public legend!: D3Selection;
 
   private xAxisSize = 100;
   private yAxisSize = 50;
@@ -47,9 +47,7 @@ export class SvgToolsService {
   constructor(private chrIdsSvc: ChrIdsService,
               private strainSvc: StrainMapService,
               private dataCache: DataCacheService,
-              private zoomTools: ZoomIntervalService) {
-    console.log("Created svg tools svc instance");
-  }
+              private zoomTools: ZoomIntervalService) { }
 
   public init(intervalMode: boolean = false) {
     // this.svgComp = svgComponent;
@@ -134,15 +132,7 @@ export class SvgToolsService {
     svgComp.plotContentsGroup.selectAll("*").remove();
   }
 
-  public drawLegend(svgComp: SvgElementComponent, contributingStrains: string[], yOffset: number) {
-    // svgComp.svg.selectAll("g.plot-legend")
-      // .filter((e: any) => {return (e.classList[0] === "plot-legend");})
-      // .remove();
-
-    // this.legend = svgComp.svg.append("g")
-    //   .attr("class", "plot-legend")
-    //   .attr("transform", "translate(30, " + yOffset + ")");
-
+  public drawLegend(svgComp: SvgElementComponent, contributingStrains: string[]) {
     this.legend = svgComp.plotLegend;
 
     let translateX = 0;
@@ -257,6 +247,7 @@ export class SvgToolsService {
                   this.strainSvc.strainColor(currStrain1))
               })
               .on("mouseout", () => this.clearHaplotypeHightlight());
+            // eslint-disable-next-line no-prototype-builtins
             if(haplotypeMap.hasOwnProperty(currStrain1)) {
               currRect.style('fill', this.strainSvc.strainColor(currStrain1));
             }
@@ -279,6 +270,7 @@ export class SvgToolsService {
                   this.strainSvc.strainColor(currStrain1))
               })
               .on("mouseout", () => this.clearHaplotypeHightlight());
+            // eslint-disable-next-line no-prototype-builtins
             if(haplotypeMap.hasOwnProperty(currStrain1)) {
               currRect.style('fill', this.strainSvc.strainColor(currStrain1));
             }
@@ -300,6 +292,7 @@ export class SvgToolsService {
                   this.strainSvc.strainColor(currStrain2))
               })
               .on("mouseout", () => this.clearHaplotypeHightlight());
+            // eslint-disable-next-line no-prototype-builtins
             if(haplotypeMap.hasOwnProperty(currStrain2)) {
               currRect.style('fill', this.strainSvc.strainColor(currStrain2));
             }
@@ -381,15 +374,10 @@ export class SvgToolsService {
       // d3.select("body").selectAll("." + name).remove();
 
       const intervalWidth = this.genomeScale(_zoomInterval.endPos) - this.genomeScale(_zoomInterval.startPos);
-      console.log(_zoomInterval.endPos);
-      console.log(_zoomInterval.startPos);
-      console.log(intervalWidth);
       const snpBandWidth = intervalWidth/numBands;
-      console.log(snpBandWidth)
 
       // determine how many base pairs are in each band
       const bpPerBand = (_zoomInterval.size/intervalWidth)*snpBandWidth;
-      console.log(bpPerBand);
 
       const snpBins = [];
       let bandCount = 0;
@@ -402,16 +390,14 @@ export class SvgToolsService {
           // console.log(i);
           // console.log(i+bpPerBand);
           if (position >= i && position <= i+bpPerBand) {
-            console.log('found one!' + position);
             count++;
             // TODO: We might not need this check anymore
+            // eslint-disable-next-line no-prototype-builtins
             if (snpData.hasOwnProperty(position)) {
-              console.log('Pushing!');
               positions.push(position);
             }
           }
         }))
-        console.log(count);
         // snpData.
         // _snpData.forEach(((value, position, snpData) => {
         //
@@ -425,7 +411,6 @@ export class SvgToolsService {
         }
         bandCount++;
       }
-      console.log(snpBins);
 
       // TODO: Fix this tooltip
       // make a tooltip that shows the data on the hovered snp
@@ -467,8 +452,6 @@ export class SvgToolsService {
         .attr("height", 10)
         // TODO: Fix implicit any type
         .attr("transform", (d: SnpBinItem) => {
-          console.log(d.band);
-          console.log(((d.band)*snpBandWidth));
           return "translate(" + ((d.band)*snpBandWidth) + ", 0)"
         })
         // TODO: Fix implicit any type

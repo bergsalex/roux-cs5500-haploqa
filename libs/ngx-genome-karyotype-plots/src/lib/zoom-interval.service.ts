@@ -1,7 +1,8 @@
 import {Injectable, Input} from "@angular/core";
 import { DataCacheService } from "./data-cache.service";
-import {SvgElementComponent} from "./svg-element/svg-element.component";
+import {SvgElementComponent, D3SvggElement} from "./svg-element/svg-element.component";
 import * as d3 from "d3";
+
 
 export interface ChrInterval {
   size: number,
@@ -29,13 +30,9 @@ export class ZoomIntervalService {
   // private _zoomOverlayGroup!: any
   private _zoomIntervalChange = false;
 
-  private _refIntervalMovingX!: number;
+  // private _refIntervalMovingX!: number;
   private _zoomInitStartBp!: number;
   private _zoomInitWidthBp!: number;
-
-  // TODO: These need to be initialized
-  public chrOrdinalScale: any;
-  public genomeScale: any
 
   @Input() intervalMode = false;
 
@@ -43,7 +40,7 @@ export class ZoomIntervalService {
     this.dataCache.zoomInterval(ZoomIntervalService.defaultInterval);
   }
 
-  private static zoomOverlayGroup(svgComp: SvgElementComponent): any {
+  private static zoomOverlayGroup(svgComp: SvgElementComponent): D3SvggElement {
     return svgComp.svg.append("g").attr("class", "zoom-overlay");
   }
 

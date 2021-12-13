@@ -1,6 +1,11 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import * as d3 from "d3";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+export type D3Selection = d3.Selection<HTMLElement, {}, null, undefined>;
+export type D3SvggElement = d3.Selection<SVGGElement, any, null, undefined>;
+
+
 export interface MousePositionInfo {
   x: number,
   y: number
@@ -15,11 +20,11 @@ export class SvgElementComponent implements AfterViewInit {
 
   // TODO: Fix these types
   public svg!: any;
-  public plot: any;
-  public plotContentsGroup!: any
-  public axes!: any;
-  public plotLegend!: any;
-  public snpBar!: any;
+  public plot!: D3Selection;
+  public plotContentsGroup!: D3Selection;
+  public axes!: D3Selection;
+  public plotLegend!: D3Selection;
+  public snpBar!: D3Selection;
 
   @Input() name = 'SVG Common!';
   @Input() width = 900;

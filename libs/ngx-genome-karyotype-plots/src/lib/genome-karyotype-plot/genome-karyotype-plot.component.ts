@@ -44,7 +44,7 @@ export class GenomeKaryotypePlotComponent implements AfterViewInit {
       this.svgTools.updateAxes(this.svgComponent);
       // TODO: Check usage of this
       this.svgTools.drawNoDataOverlay(this.svgComponent, 'Loading Data', 30);
-      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 900);
+      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains);
       this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
     }
   }

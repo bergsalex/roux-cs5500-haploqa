@@ -1,9 +1,10 @@
 <ng-content select="[slot=header]"></ng-content>
 <div class="row" id="hapkaryoplot">
-  <haploqa-modules-svg-element
-    [name]="name" [width]="width"
-    [height]="height" [margin]="margin"
-    (svgClick)="handleClick($event)">
+  <haploqa-modules-svg-element [name]="name"
+                               [width]="width"
+                               [height]="height"
+                               [margin]="margin"
+                               (svgClick)="handleClick($event)">
   </haploqa-modules-svg-element>
 </div>
 <ng-content select="[slot=footer]"></ng-content>
