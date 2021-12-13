@@ -26,7 +26,7 @@ export class PlotContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.strainSvc.strainMap = this.strainMap;
-    this.chrIdsSvc.initChrIds(this.chrSizes);
+    this.chrIdsSvc.chrSizes = this.chrSizes;
   }
 
 }

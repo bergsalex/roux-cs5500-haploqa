@@ -33,7 +33,7 @@ export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.strainSvc.strainMap = this.strainMap;
-    this.chrIdsSvc.initChrIds(this.chrSizes)
+    this.chrIdsSvc.chrSizes = this.chrSizes;
   }
 
   ngAfterViewInit() {

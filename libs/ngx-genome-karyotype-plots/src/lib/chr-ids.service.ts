@@ -14,16 +14,25 @@ export class ChrIdsService {
   /** This is a helper class to organize tools related to working with chromosome ids. **/
 
   public chrIDs: string[] = [];
-  public chrSizes: ChrSize[] = [];
   public minStartBp!: number;
   public maxEndBp!: number;
   public chrSizesHash: {[key: string]: ChrSize} = {};
 
+  private _chrSizes: ChrSize[] = [];
+
   constructor() {}
 
-  public initChrIds(chrSizes: ChrSize[]): void {
-    this.chrSizes = chrSizes;
-    this.chrSizes.forEach((currChr) => {
+  set chrSizes(newSizes: ChrSize[]) {
+    this._chrSizes = newSizes;
+    this.resetChrIds()
+  }
+
+  get chrSizes(): ChrSize[] {
+    return this._chrSizes;
+  }
+
+  private resetChrIds() {
+    this._chrSizes.forEach((currChr) => {
       if (typeof this.minStartBp === 'undefined' || currChr.startPos < this.minStartBp) {
         this.minStartBp = currChr.startPos;
       }
@@ -35,6 +44,6 @@ export class ChrIdsService {
 
       this.chrIDs.push(currChr.chr);
       this.chrSizesHash[currChr.chr] = currChr;
-    })
+    });
   }
 }
