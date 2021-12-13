@@ -2,8 +2,8 @@ import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core'
 import {ChrIdsService, ChrSize} from "../chr-ids.service";
 import {StrainMapService} from "../strain-map.service";
 import {SvgToolsService} from "../svg-tools.service";
-import {mm10ChrSizes} from "@haploqa-modules/ngx-genome-karyotype-plots";
 import {SvgElementComponent} from "../svg-element/svg-element.component";
+import {mm10ChrSizes} from "../example-data/mm10-data"
 
 @Component({
   selector: 'ngx-genome-interval-plot',

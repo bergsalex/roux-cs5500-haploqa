@@ -39,8 +39,6 @@ export class SvgElementComponent implements AfterViewInit {
   @Output() svgMouseMove = new EventEmitter<MousePositionInfo>();
   @Output() svgMouseUp = new EventEmitter<MousePositionInfo>();
 
-  constructor() {}
-
   ngAfterViewInit() {
     this.svg = d3.select(this.svgElem.nativeElement);
     this.plot = d3.select(this.plotElem.nativeElement);

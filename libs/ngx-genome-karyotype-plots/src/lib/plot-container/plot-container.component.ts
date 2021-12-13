@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { ZoomIntervalService } from "../zoom-interval.service";
 import {ChrIdsService, ChrSize} from "../chr-ids.service";
-import {mm10ChrSizes} from "@haploqa-modules/ngx-genome-karyotype-plots";
 import {StrainMapService} from "../strain-map.service";
 import {DataCacheService} from "../data-cache.service";
+import {StrainMap} from "../strain-map.service";
+import {mm10ChrSizes} from "../example-data/mm10-data"
 
 @Component({
   selector: 'ngx-genome-plot-container',
@@ -19,7 +20,7 @@ import {DataCacheService} from "../data-cache.service";
 export class PlotContainerComponent implements OnInit {
 
   @Input() chrSizes: ChrSize[] = mm10ChrSizes;
-  @Input() strainMap: {} = {};
+  @Input() strainMap: StrainMap = {};
 
   constructor(private chrIdsSvc: ChrIdsService,
               private strainSvc: StrainMapService) { }

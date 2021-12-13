@@ -15,6 +15,13 @@ export interface ChrInterval {
 })
 export class ZoomIntervalService {
 
+  private static defaultInterval: ChrInterval = {
+    chr: "1",
+    startPos: 0,
+    endPos: 10000000,
+    size: 10000000
+  }
+
   // TODO: Fix these types
   // private svgComp!: SvgElementComponent;
   public initZoomWidthBp = 10000000 - 1;
@@ -29,13 +36,6 @@ export class ZoomIntervalService {
   // TODO: These need to be initialized
   public chrOrdinalScale: any;
   public genomeScale: any
-
-  private static defaultInterval: ChrInterval = {
-    chr: "1",
-    startPos: 0,
-    endPos: 10000000,
-    size: 10000000
-  }
 
   @Input() intervalMode = false;
 

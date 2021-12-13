@@ -7,7 +7,7 @@ import {SvgToolsService} from "../svg-tools.service";
   templateUrl: './haplotypes-panel.component.html',
   styleUrls: ['./haplotypes-panel.component.scss']
 })
-export class HaplotypesPanelComponent implements OnInit {
+export class HaplotypesPanelComponent {
 
   @Input() sample: any;
 
@@ -38,9 +38,6 @@ export class HaplotypesPanelComponent implements OnInit {
 
   public strainColor(strainName: string): string {
     return this.strainSvc.strainColor(strainName);
-  }
-
-  ngOnInit(): void {
   }
 
 }

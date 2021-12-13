@@ -8,7 +8,6 @@ import {ChrIdsService} from "./chr-ids.service";
 import {DataCacheService} from "./data-cache.service";
 import {ChrSize} from "./chr-ids.service";
 import {StrainMapService} from "./strain-map.service";
-import {svg} from "d3";
 
 export interface SnpDataItem {
   snp_id: string,
@@ -377,7 +376,7 @@ export class SvgToolsService {
     if (_snpData && _zoomInterval) {
       // set number of bands to show over interval here; higher for thinner bands, lower for thicker
       const numBands = 120;
-      const format = d3.format(",");
+      // const format = d3.format(",");
 
       // d3.select("body").selectAll("." + name).remove();
 
