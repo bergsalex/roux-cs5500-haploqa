@@ -20,7 +20,7 @@ export interface SnpDataItem {
   allele2_fwd?: string
 }
 
-export type SnpData = Map<number, SnpDataItem>;
+export type SnpData = Record<number, SnpDataItem>;
 
 export interface SnpBinItem {
   band: number,

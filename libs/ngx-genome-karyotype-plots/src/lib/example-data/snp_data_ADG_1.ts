@@ -1,5 +1,6 @@
 import {SnpData} from "../svg-tools.service"
-export const SNP_DATA_ADG_1 : {} = {
+
+export const SNP_DATA_ADG_1 : SnpData = {
   "100046582": {
     "allele1_fwd": "C",
     "allele2_fwd": "C",
