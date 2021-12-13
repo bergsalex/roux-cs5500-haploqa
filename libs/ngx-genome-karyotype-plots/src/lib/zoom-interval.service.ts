@@ -20,7 +20,7 @@ export class ZoomIntervalService {
   public initZoomWidthBp = 10000000 - 1;
   private _zoomInterval!: ChrInterval;
   // private _zoomOverlayGroup!: any
-  private _zoomIntervalChange: boolean = false;
+  private _zoomIntervalChange = false;
 
   private _refIntervalMovingX!: number;
   private _zoomInitStartBp!: number;
@@ -37,7 +37,7 @@ export class ZoomIntervalService {
     size: 10000000
   }
 
-  @Input() intervalMode: boolean = false;
+  @Input() intervalMode = false;
 
   constructor(private dataCache: DataCacheService) {
     this.dataCache.zoomInterval(ZoomIntervalService.defaultInterval);
@@ -52,7 +52,7 @@ export class ZoomIntervalService {
   }
 
   public zoomInterval(svgComp: SvgElementComponent, newZoomInterval?: ChrInterval): ChrInterval {
-    let _zoomOverlayGroup = ZoomIntervalService.zoomOverlayGroup(svgComp);
+    const _zoomOverlayGroup = ZoomIntervalService.zoomOverlayGroup(svgComp);
     this._zoomInterval = this.dataCache.zoomInterval(newZoomInterval);
     this._zoomInitStartBp = this._zoomInterval.startPos;
     this._zoomInitWidthBp = this._zoomInterval.size;
@@ -64,7 +64,7 @@ export class ZoomIntervalService {
   }
 
   public addIntervalModeZoom(svgComp: SvgElementComponent): void {
-    let zoom = d3.zoom()
+    const zoom = d3.zoom()
     svgComp.svg.call(zoom);
     zoom.on('zoomstart', () => {
       if(this._zoomInterval !== null) {
@@ -77,10 +77,10 @@ export class ZoomIntervalService {
         // TODO: This reference to `d3.event` is broken
         // let newIntervalSize = Math.round(this._zoomInitWidthBp / d3.event.scale);
         // TODO: Replace filler code below with rewritten code from above
-        let newIntervalSize = 0;
+        const newIntervalSize = 0;
         if(newIntervalSize !== this._zoomInterval.size) {
           this._zoomInterval.size = newIntervalSize;
-          let growthBp = newIntervalSize - this._zoomInitWidthBp;
+          const growthBp = newIntervalSize - this._zoomInitWidthBp;
           this._zoomInterval.startPos = this._zoomInitStartBp - Math.round(growthBp / 2);
           // TODO what about this - 1. Do we need it?
           this._zoomInterval.endPos = this._zoomInterval.startPos + this._zoomInterval.size - 1;

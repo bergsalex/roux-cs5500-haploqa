@@ -43,7 +43,7 @@ export class SvgToolsService {
   private yAxisSize = 50;
   private _yAxisIDs: string[] = [];
 
-  private intervalMode: boolean = false;
+  private intervalMode = false;
 
   constructor(private chrIdsSvc: ChrIdsService,
               private strainSvc: StrainMapService,
@@ -77,7 +77,7 @@ export class SvgToolsService {
     let startBp: number;
     let endBp: number;
     if(this.intervalMode) {
-      let zoomInterval = this.zoomTools.zoomInterval(svgComp);
+      const zoomInterval = this.zoomTools.zoomInterval(svgComp);
       startBp = zoomInterval.startPos;
       endBp = zoomInterval.startPos + zoomInterval.size;
       this._yAxisIDs = [zoomInterval.chr];
@@ -90,7 +90,7 @@ export class SvgToolsService {
     this.genomeScale = d3.scaleLinear()
       .domain([startBp, endBp])
       .range([this.yAxisSize, svgComp.width - this.yAxisSize - 2]);
-    let genomeAxis = d3.axisBottom<number>(this.genomeScale)
+    const genomeAxis = d3.axisBottom<number>(this.genomeScale)
       .tickFormat((x: number) => {return (x / 1000000) + ' Mb';});
 
     this.axesGroup.append("g")
@@ -102,7 +102,7 @@ export class SvgToolsService {
       .domain(this.yAxisIDs)
       .rangeRound([0, svgComp.height - this.xAxisSize])
       .padding(this.intervalMode ? 0.0 : 0.2);
-    let yAxis = d3.axisLeft<string>(this.chrOrdinalScale)
+    const yAxis = d3.axisLeft<string>(this.chrOrdinalScale)
       .tickFormat((x: string) => {return 'Chr' + x;})
       .tickPadding(0.2);
     this.axesGroup.append("g")
@@ -113,8 +113,8 @@ export class SvgToolsService {
 
   // TODO: Check if xOffset should be a number
   public drawNoDataOverlay(svgComp: SvgElementComponent, msg: string, xOffset: number): void {
-    let contents = msg.toUpperCase();
-    let overlayGroup = svgComp.svg.append("g")
+    const contents = msg.toUpperCase();
+    const overlayGroup = svgComp.svg.append("g")
       .attr("class", "no-data-overlay");
 
     overlayGroup.append("rect")
@@ -148,11 +148,11 @@ export class SvgToolsService {
 
     let translateX = 0;
     contributingStrains.forEach(e => {
-      let name = e;
-      let color = this.strainSvc.strainColor(e);
-      let width = 13 + (name.length * 7) + 10;
+      const name = e;
+      const color = this.strainSvc.strainColor(e);
+      const width = 13 + (name.length * 7) + 10;
 
-      let keyElement = this.legend.append("g")
+      const keyElement = this.legend.append("g")
         .attr("id", "svg-" + name)
         .attr("transform", "translate(" + translateX + ", 10)");
 
@@ -173,8 +173,8 @@ export class SvgToolsService {
   public updateHaplotypes(svgComp: SvgElementComponent, haploData: any): void {
     this.removeNoDataOverlay(svgComp);
     haploData = this.dataCache.haplotypeData(haploData);
-    let haplotypeMap = this.dataCache.haplotypeMap(this.strainSvc.strainMap);
-    let strainNames = this.dataCache.strainName(this.strainSvc.strainNames);
+    const haplotypeMap = this.dataCache.haplotypeMap(this.strainSvc.strainMap);
+    const strainNames = this.dataCache.strainName(this.strainSvc.strainNames);
 
     this.removeAllPlotContentsGroup(svgComp);
 
@@ -211,16 +211,16 @@ export class SvgToolsService {
       if(!(chr in haploData.viterbi_haplotypes.chromosome_data)) {
         return;
       }
-      let haplos = haploData.viterbi_haplotypes.chromosome_data[chr];
-      let currChrSize = this.chrIdsSvc.chrSizesHash[chr];
-      let _zoomInterval = this.zoomTools.zoomInterval(svgComp);
+      const haplos = haploData.viterbi_haplotypes.chromosome_data[chr];
+      const currChrSize = this.chrIdsSvc.chrSizesHash[chr];
+      const _zoomInterval = this.zoomTools.zoomInterval(svgComp);
       if(haplos.haplotype_blocks) {
         // TODO: Should not be type `any`
         haplos.haplotype_blocks.forEach((currHaplo: any) => {
-          let currStrain1 = haploData.contributing_strains[currHaplo.haplotype_index_1];
-          let currStrainIdx1 = strainNames.indexOf(currStrain1);
-          let currStrain2 = haploData.contributing_strains[currHaplo.haplotype_index_2];
-          let currStrainIdx2 = strainNames.indexOf(currStrain2);
+          const currStrain1 = haploData.contributing_strains[currHaplo.haplotype_index_1];
+          const currStrainIdx1 = strainNames.indexOf(currStrain1);
+          const currStrain2 = haploData.contributing_strains[currHaplo.haplotype_index_2];
+          const currStrainIdx2 = strainNames.indexOf(currStrain2);
 
           let currHaploStart;
           let currHaploEnd;
@@ -333,7 +333,7 @@ export class SvgToolsService {
           }
 
           concordanceScore = 1.0 - concordanceScore;
-          let height = concordanceScore * this.chrOrdinalScale.bandwidth() / 2.0;
+          const height = concordanceScore * this.chrOrdinalScale.bandwidth() / 2.0;
           svgComp.plotContentsGroup.append("rect")
             .style('fill', 'red')
             .attr("x", this.genomeScale(currBinStart))
@@ -373,31 +373,31 @@ export class SvgToolsService {
   public updateSNPBar(svgComp: SvgElementComponent, snpData?: SnpData) {
     const _snpData: SnpData = this.dataCache.snpData(snpData);
     svgComp.snpBar.selectAll("*").remove();
-    let _zoomInterval = this.zoomTools.zoomInterval(svgComp);
+    const _zoomInterval = this.zoomTools.zoomInterval(svgComp);
     if (_snpData && _zoomInterval) {
       // set number of bands to show over interval here; higher for thinner bands, lower for thicker
-      let numBands = 120;
-      let format = d3.format(",");
+      const numBands = 120;
+      const format = d3.format(",");
 
       // d3.select("body").selectAll("." + name).remove();
 
-      let intervalWidth = this.genomeScale(_zoomInterval.endPos) - this.genomeScale(_zoomInterval.startPos);
+      const intervalWidth = this.genomeScale(_zoomInterval.endPos) - this.genomeScale(_zoomInterval.startPos);
       console.log(_zoomInterval.endPos);
       console.log(_zoomInterval.startPos);
       console.log(intervalWidth);
-      let snpBandWidth = intervalWidth/numBands;
+      const snpBandWidth = intervalWidth/numBands;
       console.log(snpBandWidth)
 
       // determine how many base pairs are in each band
-      let bpPerBand = (_zoomInterval.size/intervalWidth)*snpBandWidth;
+      const bpPerBand = (_zoomInterval.size/intervalWidth)*snpBandWidth;
       console.log(bpPerBand);
 
-      let snpBins = [];
+      const snpBins = [];
       let bandCount = 0;
       let max = 0;
       for (let i = _zoomInterval.startPos; i <= _zoomInterval.endPos; i+=bpPerBand) {
         let count = 0;
-        let positions: number[] = [];
+        const positions: number[] = [];
         Object.entries(_snpData).forEach(((value, position, snpData) => {
           // console.log(position);
           // console.log(i);
@@ -476,7 +476,7 @@ export class SvgToolsService {
         .style("fill", (d: any) => {
           // the max for density that was found earlier will be 100% opacity
           // calculate the opacity of all other bands based on the max
-          let opacity = Math.round((d.density /max) * 100) / 100;
+          const opacity = Math.round((d.density /max) * 100) / 100;
           return "rgba(0, 0, 0, " + opacity + ")";
         });
         // TODO: Fix these tooltip mouseovers

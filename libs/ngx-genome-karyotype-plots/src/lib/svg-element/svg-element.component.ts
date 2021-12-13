@@ -21,11 +21,11 @@ export class SvgElementComponent implements AfterViewInit {
   public plotLegend!: any;
   public snpBar!: any;
 
-  @Input() name: string = 'SVG Common!';
-  @Input() width: number = 900;
-  @Input() height: number = 960;
-  @Input() margin: number = 50;
-  @Input() intervalMode: boolean = false;
+  @Input() name = 'SVG Common!';
+  @Input() width = 900;
+  @Input() height = 960;
+  @Input() margin = 50;
+  @Input() intervalMode = false;
 
   @ViewChild('svgElem') public svgElem!: ElementRef<HTMLElement>;
   @ViewChild('plotElem') public plotElem!: ElementRef<HTMLElement>;
@@ -51,12 +51,12 @@ export class SvgElementComponent implements AfterViewInit {
   }
 
   public mousePositionInfo($event: MouseEvent): MousePositionInfo {
-    let mouseXY = d3.pointer($event);
+    const mouseXY = d3.pointer($event);
     // TODO: Check why the commented code (legacy) fails in typescript
     // let x = mouseXY[0] - self.radius;
     // let y = mouseXY[1] - self.radius;
-    let x = mouseXY[0]
-    let y = mouseXY[1];
+    const x = mouseXY[0]
+    const y = mouseXY[1];
     console.log(mouseXY)
 
     return {x: x, y: y};

@@ -13,10 +13,10 @@ import {SvgElementComponent} from "../svg-element/svg-element.component";
 })
 export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
 
-  @Input() name: string = 'Genome Interval Plot';
-  @Input() width: number = 900;
-  @Input() height: number = 200;
-  @Input() margin: number = 50;
+  @Input() name = 'Genome Interval Plot';
+  @Input() width = 900;
+  @Input() height = 200;
+  @Input() margin = 50;
   @Input() chrSizes: ChrSize[] = mm10ChrSizes;
 
   @Input() strainMap: any = {};

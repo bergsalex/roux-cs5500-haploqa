@@ -36,7 +36,7 @@ export class ChrIdsService {
         this.minStartBp = currChr.startPos;
       }
 
-      let currEnd = currChr.startPos + currChr.size;
+      const currEnd = currChr.startPos + currChr.size;
       if (typeof  this.maxEndBp === 'undefined' || currEnd > this.maxEndBp) {
         this.maxEndBp = currEnd;
       }
