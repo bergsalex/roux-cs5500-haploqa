@@ -26,7 +26,7 @@ This document is written using the
 [Markdow language](https://daringfireball.net/projects/markdown/) and follows all its language and 
 syntax conventions. 
 
-Feature prioriteies exist in two tiers: 
+Feature priorities exist in two tiers: 
 - Tier-1:
   - To be delivered even at the expense of _any_ work being delivered on Tier-2
 - Tier-2, 
