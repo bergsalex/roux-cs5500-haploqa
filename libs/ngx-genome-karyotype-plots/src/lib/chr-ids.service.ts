@@ -14,10 +14,11 @@ export class ChrIdsService {
   /** This is a helper class to organize tools related to working with chromosome ids. **/
 
   public chrIDs: string[] = [];
-  public _chrSizes: ChrSize[] = [];
   public minStartBp!: number;
   public maxEndBp!: number;
   public chrSizesHash: {[key: string]: ChrSize} = {};
+
+  private _chrSizes: ChrSize[] = [];
 
   set chrSizes(newSizes: ChrSize[]) {
     this._chrSizes = newSizes;
