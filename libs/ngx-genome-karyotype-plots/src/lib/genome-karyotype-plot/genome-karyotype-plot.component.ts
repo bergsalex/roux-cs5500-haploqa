@@ -13,10 +13,10 @@ import {StrainMapService, StrainMap} from "../strain-map.service";
 })
 export class GenomeKaryotypePlotComponent implements AfterViewInit {
 
-  @Input() name: string = 'Genome Karyotype Plot';
-  @Input() width: number = 900;
-  @Input() height: number = 960;
-  @Input() margin: number = 50;
+  @Input() name = 'Genome Karyotype Plot';
+  @Input() width = 900;
+  @Input() height = 960;
+  @Input() margin = 50;
   @Input() sample: any;
   @Input() haploData: any;
 
@@ -44,21 +44,21 @@ export class GenomeKaryotypePlotComponent implements AfterViewInit {
       this.svgTools.updateAxes(this.svgComponent);
       // TODO: Check usage of this
       this.svgTools.drawNoDataOverlay(this.svgComponent, 'Loading Data', 30);
-      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 900);
+      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains);
       this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
     }
   }
 
   public handleClick(pos: MousePositionInfo): void {
     let chr = '';
-    let x = pos.x;
+    const x = pos.x;
     // TODO: We clearly need this line, but why do we subtract 15?? Where did we get that number?
-    let y = pos.y - 15;
+    const y = pos.y - 15;
     // let y = pos.y;
-    let bpPos = this.svgTools.genomeScale.invert(x);
-    let ordinalHeight = this.svgTools.chrOrdinalScale.bandwidth();
-    for (let id of this.svgTools.yAxisIDs) {
-      let currY = this.svgTools.chrOrdinalScale(id);
+    const bpPos = this.svgTools.genomeScale.invert(x);
+    const ordinalHeight = this.svgTools.chrOrdinalScale.bandwidth();
+    for (const id of this.svgTools.yAxisIDs) {
+      const currY = this.svgTools.chrOrdinalScale(id);
       if (y >= currY && y <= currY + ordinalHeight) {
         chr = id;
       }

@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ChrIdsService, ChrSize} from "../chr-ids.service";
 import {StrainMapService} from "../strain-map.service";
-import {SvgToolsService} from "../svg-tools.service";
-import {mm10ChrSizes} from "@haploqa-modules/ngx-genome-karyotype-plots";
+import {SvgToolsService, SnpData} from "../svg-tools.service";
 import {SvgElementComponent} from "../svg-element/svg-element.component";
+import {mm10ChrSizes} from "../example-data/mm10-data"
 
 @Component({
   selector: 'ngx-genome-interval-plot',
@@ -13,16 +13,16 @@ import {SvgElementComponent} from "../svg-element/svg-element.component";
 })
 export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
 
-  @Input() name: string = 'Genome Interval Plot';
-  @Input() width: number = 900;
-  @Input() height: number = 200;
-  @Input() margin: number = 50;
+  @Input() name = 'Genome Interval Plot';
+  @Input() width = 900;
+  @Input() height = 200;
+  @Input() margin = 50;
   @Input() chrSizes: ChrSize[] = mm10ChrSizes;
 
   @Input() strainMap: any = {};
   @Input() sample: any;
   @Input() haploData: any;
-  @Input() snpData: any;
+  @Input() snpData: SnpData | undefined;
 
   @ViewChild(SvgElementComponent)
   private svgComponent!: SvgElementComponent
@@ -42,7 +42,7 @@ export class GenomeIntervalPlotComponent implements OnInit, AfterViewInit {
       this.svgTools.updateAxes(this.svgComponent);
       // TODO: Check usage of this
       this.svgTools.updateHaplotypes(this.svgComponent, this.haploData);
-      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains, 0);
+      this.svgTools.drawLegend(this.svgComponent, this.sample.contributing_strains);
       this.svgTools.updateSNPBar(this.svgComponent, this.snpData);
     }
   }

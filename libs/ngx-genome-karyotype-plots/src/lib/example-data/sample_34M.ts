@@ -1,6 +1,7 @@
 import { SnpDataItem } from "../svg-tools.service"
+import { StrainMap } from "../strain-map.service"
 
-export const STRAIN_MAP_34M: {} = {
+export const STRAIN_MAP_34M: StrainMap = {
   "129P1/ReJ": {"color": "#b37441", "url": "/standard-designation/129P1%5CfReJ.html"},
   "129P3/J": {"color": "#00eaff", "url": "/standard-designation/129P3%5CfJ.html"},
   "129S1/SvImJ": {"color": "#ff8888", "url": "/standard-designation/129S1%5CfSvImJ.html"},

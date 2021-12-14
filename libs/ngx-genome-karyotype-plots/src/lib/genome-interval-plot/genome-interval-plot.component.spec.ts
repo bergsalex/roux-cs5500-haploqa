@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GenomeIntervalPlotComponent } from './genome-interval-plot.component';
+import {SvgElementComponent} from "../svg-element/svg-element.component";
 
 describe('GenomeIntervalPlotComponent', () => {
   let component: GenomeIntervalPlotComponent;
@@ -8,7 +9,7 @@ describe('GenomeIntervalPlotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenomeIntervalPlotComponent ]
+      declarations: [ GenomeIntervalPlotComponent, SvgElementComponent ]
     })
     .compileComponents();
   });

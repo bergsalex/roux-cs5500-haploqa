@@ -122,7 +122,7 @@ export const mm10ChrSizes = [
  * ftp://hgdownload.cse.ucsc.edu/goldenPath/mm10/database/cytoBand.txt.gz
  * @type Array.<GenoInterval>
  */
-var mm10CytoBands = [
+const mm10CytoBands = [
     {
         "chr": "1",
         "cytoBandType": "gpos100",
@@ -2543,7 +2543,7 @@ var mm10CytoBands = [
     }
 ];
 
-var mm10ChrBand = [
+const mm10ChrBand = [
     {
         "chr": "1",
         "size": 195471971,

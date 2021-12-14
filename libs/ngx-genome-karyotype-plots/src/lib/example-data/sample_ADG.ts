@@ -51,7 +51,7 @@ export const STRAIN_MAP_ADG = {
 "SPRET/EiJ": {"color": "#4d6b22", "url": "/standard-designation/SPRET%5CfEiJ.html"},
 "WSB/EiJ": {"color": "#9900ee", "url": "/standard-designation/WSB%5CfEiJ.html"},
 "ZALENDE/EiJ": {"color": "#198ccf", "url": "/standard-designation/ZALENDE%5CfEiJ.html"}};
-let SAMPLE_ID_ADG = "ADG";
-let STRAIN_ID_ADG = "26972"
+const SAMPLE_ID_ADG = "ADG";
+const STRAIN_ID_ADG = "26972"
 
 export const SAMPLE_ADG = {"_id": "5f56293b183b6a06dabbe5e2", "color": "#000000", "contributing_strains": ["129S1/SvImJ", "A/J", "C57BL/6J", "CAST/EiJ", "NOD/ShiLtJ", "NZO/HlLtJ", "PWK/PhJ", "WSB/EiJ"], "haplotype_candidate": false, "heterozygous_count": 1123, "heterozygous_percent": 0.7838949036360717, "homozygous_count": 136257, "homozygous_percent": 95.11234896236886, "is_public": true, "last_haplotyping": "04/01/2021 13:58 PM EST", "last_update": "04/01/2021 14:34 PM EST", "neg_ctrl_eng_tgts": [], "no_read_count": 5879, "no_read_percent": 4.103756133995072, "notes": null, "other_ids": ["1"], "owner": "tim.stearns@jax.org", "platform_id": "GigaMUGA", "pos_ctrl_eng_tgts": [], "properties": {"Index": "1", "Name": "1", "Plate": "273578", "SentrixPosition": "204680180004_R12C01", "Well": "A12"}, "sample_id": "ADG", "sex": "male", "standard_designation": "CC029", "strain_id": "26972", "tags": ["Jackson_Lab_Ciciotte_MURGIGV01_20200903_FinalReport", "GigaMUGA", "CC029", "Collaborative Cross", "CollaborativeCross"], "updated_by": "Anna.Lamoureux@jax.org", "user_can_write": false, "user_is_owner": false, "viterbi_haplotypes": {"chromosome_data": {}, "concordant_count": 0, "concordant_percent": null, "informative_count": 0}, "write_groups": []};

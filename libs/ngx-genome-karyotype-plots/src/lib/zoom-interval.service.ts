@@ -1,7 +1,8 @@
 import {Injectable, Input} from "@angular/core";
 import { DataCacheService } from "./data-cache.service";
-import {SvgElementComponent} from "./svg-element/svg-element.component";
+import {SvgElementComponent, D3SvggElement} from "./svg-element/svg-element.component";
 import * as d3 from "d3";
+
 
 export interface ChrInterval {
   size: number,
@@ -15,21 +16,6 @@ export interface ChrInterval {
 })
 export class ZoomIntervalService {
 
-  // TODO: Fix these types
-  // private svgComp!: SvgElementComponent;
-  public initZoomWidthBp = 10000000 - 1;
-  private _zoomInterval!: ChrInterval;
-  // private _zoomOverlayGroup!: any
-  private _zoomIntervalChange: boolean = false;
-
-  private _refIntervalMovingX!: number;
-  private _zoomInitStartBp!: number;
-  private _zoomInitWidthBp!: number;
-
-  // TODO: These need to be initialized
-  public chrOrdinalScale: any;
-  public genomeScale: any
-
   private static defaultInterval: ChrInterval = {
     chr: "1",
     startPos: 0,
@@ -37,13 +23,24 @@ export class ZoomIntervalService {
     size: 10000000
   }
 
-  @Input() intervalMode: boolean = false;
+  // TODO: Fix these types
+  // private svgComp!: SvgElementComponent;
+  public initZoomWidthBp = 10000000 - 1;
+  private _zoomInterval!: ChrInterval;
+  // private _zoomOverlayGroup!: any
+  private _zoomIntervalChange = false;
+
+  // private _refIntervalMovingX!: number;
+  private _zoomInitStartBp!: number;
+  private _zoomInitWidthBp!: number;
+
+  @Input() intervalMode = false;
 
   constructor(private dataCache: DataCacheService) {
     this.dataCache.zoomInterval(ZoomIntervalService.defaultInterval);
   }
 
-  private static zoomOverlayGroup(svgComp: SvgElementComponent): any {
+  private static zoomOverlayGroup(svgComp: SvgElementComponent): D3SvggElement {
     return svgComp.svg.append("g").attr("class", "zoom-overlay");
   }
 
@@ -52,7 +49,7 @@ export class ZoomIntervalService {
   }
 
   public zoomInterval(svgComp: SvgElementComponent, newZoomInterval?: ChrInterval): ChrInterval {
-    let _zoomOverlayGroup = ZoomIntervalService.zoomOverlayGroup(svgComp);
+    const _zoomOverlayGroup = ZoomIntervalService.zoomOverlayGroup(svgComp);
     this._zoomInterval = this.dataCache.zoomInterval(newZoomInterval);
     this._zoomInitStartBp = this._zoomInterval.startPos;
     this._zoomInitWidthBp = this._zoomInterval.size;
@@ -64,7 +61,7 @@ export class ZoomIntervalService {
   }
 
   public addIntervalModeZoom(svgComp: SvgElementComponent): void {
-    let zoom = d3.zoom()
+    const zoom = d3.zoom()
     svgComp.svg.call(zoom);
     zoom.on('zoomstart', () => {
       if(this._zoomInterval !== null) {
@@ -77,10 +74,10 @@ export class ZoomIntervalService {
         // TODO: This reference to `d3.event` is broken
         // let newIntervalSize = Math.round(this._zoomInitWidthBp / d3.event.scale);
         // TODO: Replace filler code below with rewritten code from above
-        let newIntervalSize = 0;
+        const newIntervalSize = 0;
         if(newIntervalSize !== this._zoomInterval.size) {
           this._zoomInterval.size = newIntervalSize;
-          let growthBp = newIntervalSize - this._zoomInitWidthBp;
+          const growthBp = newIntervalSize - this._zoomInitWidthBp;
           this._zoomInterval.startPos = this._zoomInitStartBp - Math.round(growthBp / 2);
           // TODO what about this - 1. Do we need it?
           this._zoomInterval.endPos = this._zoomInterval.startPos + this._zoomInterval.size - 1;

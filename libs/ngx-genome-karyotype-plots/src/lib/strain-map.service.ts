@@ -15,8 +15,6 @@ export class StrainMapService {
   private _strainMap: StrainMap = {};
   strainNames: string[] = [];
 
-  constructor() { }
-
   set strainMap(newMap: StrainMap) {
     this._strainMap = newMap;
     this._resetStrainNames();

@@ -1,10 +1,17 @@
-import { TestBed } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {TestBed} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+import {NgxGenomeKaryotypePlotsModule} from "@haploqa-modules/ngx-genome-karyotype-plots";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
+      imports: [
+        NgxGenomeKaryotypePlotsModule,
+        NgxGenomeKaryotypePlotsModule,
+        BrowserAnimationsModule
+      ]
     }).compileComponents();
   });
 

@@ -1,6 +1,6 @@
-<mat-toolbar color="accent">
+<!--<mat-toolbar color="accent">-->
   <h1>HaploQA</h1>
-</mat-toolbar>
+<!--</mat-toolbar>-->
 
 
 <div class="page-header">
@@ -25,7 +25,18 @@
     [haploData]="haploData"
     [snpData]="snpData">
     <ngx-genome-haplotype-panel [sample]="sample" slot="footer">
-      <mat-icon></mat-icon>
+<!--      <mat-icon></mat-icon>-->
+    </ngx-genome-haplotype-panel>
+  </ngx-genome-interval-plot>
+
+  <ngx-genome-interval-plot
+    [chrSizes]="chrSizes"
+    [strainMap]="strainMap"
+    [sample]="sample"
+    [haploData]="haploData"
+    [snpData]="snpData">
+    <ngx-genome-haplotype-panel [sample]="sample" slot="footer">
+<!--      <mat-icon></mat-icon>-->
     </ngx-genome-haplotype-panel>
   </ngx-genome-interval-plot>
 </ngx-genome-plot-container>
